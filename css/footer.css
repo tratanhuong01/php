@@ -1,0 +1,60 @@
+.paddingof {
+	padding: 8px 0px;
+}
+.near-footer {
+	width: 100%;
+	display: flex;
+	margin: auto;
+	justify-content: center;
+}
+.fashion-star {
+	width: 18%;
+	padding: 8px 15px;
+}
+.fashion-star img {
+	width: 100%;
+	height: 100px;
+	object-fit: contain;
+}
+#footer {
+	width: 90%;
+	margin: auto;
+	display: flex;
+}
+#footer a i {
+	padding: 8px 0px;
+	color: black;
+}
+#footer a:hover {
+	text-decoration: none;
+	color: #1E9E74;
+}
+#footer i:hover {
+	color: #1E9E74;
+}
+.left {
+	width: 27.5%;
+	margin-right: 7%;
+}
+.middle {
+	width: 15%;
+}
+.right {
+	width: 20%;
+}
+.right-end {
+	width: 30%;
+}
+#footer-search {
+	margin: 16px 0px;
+}
+#footer-search input {
+	width: 60%;
+	padding: 6px;
+}
+#footer-search button {
+	padding: 8px;
+	background-color: #1E9E74;
+	color: white;
+	border: none;
+}

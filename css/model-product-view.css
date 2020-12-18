@@ -1,0 +1,151 @@
+#added {
+	width: 35%;
+	padding: 1em;
+	background-color: white;
+	border-radius: 20px;
+	border: 1px solid white;
+	position: absolute;
+	z-index: 9999;
+	left: 50%;
+	top: 30%;
+	transform: translate(-50%,-50%);
+	position: fixed;
+	display: none;
+}
+.added-one {
+	display: flex;
+}
+.added-one-one {
+	width: 20%;
+	border: 2px solid #ccc;
+	margin-right: 1em;
+}
+.added-one-one img {
+	width: 100%;
+}
+.added-one-two {
+	width: 80%;
+}
+#hover-product-frist-full {
+	display: none;
+}
+.added-one-two p {
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+#start-paid {
+	width: 100%;
+	color: white;
+	font-size: 17px;
+	padding: 10px;
+	border: none;
+	background-color: #1E9E74;
+	border: 1px solid #1E9E74;
+	border-radius: 8px;
+}
+#start-paid:hover {
+	border: 1px solid #1E9E74;
+	color: #1E9E74;
+	background-color: white;
+}
+#close-added {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+}
+#close-added:hover {
+	color: #1E9E74;
+}
+#hover-product-added {
+	width: 330px;
+	padding: 1em 1em 2em 1em;
+	position: absolute;
+	background-color: white;
+	z-index: 12222;
+	top: 80%;
+	right: 40%;
+	display: none;
+	border-radius: 10px;
+}
+#hover-product-frist-full {
+	width: 270px;
+}
+#hover-product-frist {
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	position: relative;
+	margin: 1em 0em;
+}
+#hover-product-added-one {
+	max-height: 320px;
+	overflow: auto;
+}
+.hover-product-added-a {
+	width: 30%;
+	margin-right: 1em;
+}
+.hover-product-added-a img {
+	width: 100%;
+}
+.hover-product-added-b {
+	width: 65%;
+}
+.close-hover-product {
+	width: 5%;
+}
+#size-close {
+	font-size: 15px !important;
+	line-height: normal !important;
+}
+.close-hover-product i {
+	font-size: 15px;
+	color: red;
+}
+#hover-product-added-two {
+	width: 100%;
+	padding: 10px 0px;
+	display: flex;
+}
+#not-have {
+	padding: 0.7em;
+}
+#button-hover-add {
+	width: 100%;
+	margin: 0.5em 0em;
+}
+#button-hover-add button {
+	width: 40%;
+	border-radius: 10px;
+	padding: 10px;
+	border: none;
+}
+#button-hover-add button:nth-child(1) {
+	width: 45%;
+	margin-right: 4%;
+	background-color: #1E9E74;
+	color: white;
+}
+#button-hover-add button:nth-child(1):hover {
+	color: #1E9E74;
+	border: 1px solid #1E9E74;
+	background-color: white;
+}
+#button-hover-add button:nth-child(2) {
+	width: 45%;
+	margin-left: 4%;
+	background-color: #ccc;
+}
+#button-hover-add button:nth-child(2):hover {
+	border: 1px solid #1E9E74;
+	background-color: white;
+	color: #1E9E74;
+}
+#cart:hover #hover-product-added {
+	display: block;
+}
+#loginandsign b {
+	cursor: pointer;
+	color: #1E9E74;
+}

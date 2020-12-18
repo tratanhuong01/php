@@ -1,0 +1,296 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.wrapper {
+	width: 80%;
+	margin: auto;
+}
+#web {
+	width: 100%;
+	margin: 0 auto;
+}
+#header {
+	width: 100%;
+	display: flex;
+	background-image: url('../images/banner.jpg');
+	height: 562px;
+	background-size: cover;
+}
+#header-web {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	line-height: 100px;
+}
+#logo {
+	width: 15%;
+	height: 100px;
+}
+#logo img {
+	width: 100%;
+	height: 80%;
+	object-fit: contain;
+	padding-left: 70px;
+}
+#menu {
+	width: 35%;
+	height: 100px;
+}
+#menu ul {
+	display: flex;	
+	list-style-type: none;
+	margin: 0;
+}
+#menu ul li {
+	padding: 0px 16px;
+	position: relative;
+}
+#menu ul li a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	display: block;
+}
+#menu ul li a:hover {
+	color: #1E9E74;
+}
+#menu ul li > .sub-menu {
+	flex-direction: column-reverse;
+	list-style-type: none;
+	display: none;
+}
+.sub-menu {
+	width: 140px;
+	position: absolute;
+	top: 70px;	
+	line-height: normal;
+	text-align: left;
+}
+.sub-menu li {
+	padding: 8px 4px !important;
+}
+.sub-menu1 {
+	position: absolute;
+	top: 20;
+	left: 142px;
+	flex-direction:column;
+	background-color:white;
+	border-radius: 10px;
+	width:150px;
+}
+.sub-menu li {
+	flex-direction: column-reverse;
+}
+#menu ul li:hover .sub-menu {
+	display: block;
+	border-radius: 10px;
+	background-color: white;
+}
+#search-header {
+	width: 25%;
+	position: relative;
+}
+#search-header input {
+	width: 90%;
+	padding: 8px;
+	line-height: normal;
+	border: none;
+	background-color: #FDF1F3;
+}
+#search-header input:hover {
+	border: 1px solid black;
+	}
+#search-header button {
+	width: 10%;
+	border: none;
+	line-height: normal;
+	padding: 8px;
+	background-color: #FDF1F3;
+	position: absolute;
+	right: 38px;
+	top: 31px;
+}
+#header-right {
+	width: 25%;
+	display: flex;
+	line-height: normal;
+}
+#circleuser {
+	padding-left: 30px;	
+}
+#circleuser i {
+	font-size: 30px;
+	padding: 0px 20px;
+	line-height: 100px;
+}
+#loginandsign {
+	padding: 28px 0px;
+	margin-right: 60px;
+}
+#loginandsign a {
+	text-decoration: none;
+	color: black;
+}
+#loginandsign a:hover {
+	color: #1E9E74;
+}
+#cart i {
+	font-size: 40px;
+	line-height: 100px;
+	color: black;
+}
+#type-shoes {
+	width: 100%;
+	text-align: center;
+	margin: 30px 0px;
+}
+#type-shoes ul li {
+	padding: 10px 20px;
+	display: inline-table;
+	text-align: center;
+}
+#type-shoes ul li a {
+	text-decoration: none;
+	color: black;
+}
+#type-shoes ul li a img {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+}
+#title-product h2,h6 {
+	text-align: center;
+	padding-bottom: 8px;
+}
+#title-product h2,h6:hover {
+	color: #1E9E74;
+}
+.product {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.name-product {
+	width: 20%;
+	height: 300px;
+	text-align: center;
+}
+.name-product img {
+	width: 95%;
+	height: 210px;
+	object-fit: contain;
+}
+.name-product a {
+	color: black;
+}
+.name-product a:hover {
+	color: #1E9E74;
+	text-decoration: none;
+}
+#banner2 {
+	width: 100%;
+	height: 400px;
+	text-align: center;
+	margin: 50px 0px;
+}
+#banner2 img {
+	width: 100%;
+	height: 400px;
+	object-fit: contain;
+}
+#news {
+	width: 100%;
+	display: flex;
+}
+#news a:hover {
+	color: #1E9E74;
+	text-decoration: none;
+}
+#news-left {
+	width: 45%;
+	height: 600px;
+	margin-right: 20px;
+}
+#news-left img {
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+}
+.news-right {
+	display: flex;
+	width: 55%;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.news-right-list {
+	width: 48%;
+	/* padding: 0px; */
+}
+.news-right-list img {
+	width: 100%;
+	height: 200px;
+	/* object-fit: contain; */
+}
+.paddingof {
+	padding: 8px 0px;
+}
+.near-footer {
+	width: 100%;
+	display: flex;
+	margin: auto;
+	justify-content: center;
+}
+.fashion-star {
+	padding: 8px 15px;
+}
+.fashion-star img {
+	width: 150px;
+	height: 100px;
+	object-fit: contain;
+}
+/*Footer cÃ¡Â»Â§a web */
+#footer {
+	width: 80%;
+	margin: auto;
+	display: flex;
+}
+#footer a i {
+	padding: 8px 0px;
+	color: black;
+}
+#footer a:hover {
+	text-decoration: none;
+	color: #1E9E74;
+}
+#footer i:hover {
+	color: #1E9E74;
+}
+.left {
+	width: 27.5%;
+	margin-right: 7%;
+}
+.middle {
+	width: 15%;
+}
+.right {
+	width: 20%;
+}
+.right-end {
+	width: 30%;
+}
+#footer-search {
+	margin: 16px 0px;
+}
+#footer-search input {
+	padding: 6px;
+}
+#footer-search button {
+	padding: 8px;
+	background-color: #1E9E74;
+	color: white;
+	border: none;
+}
+.heading {
+	padding-bottom: 20px;
+}

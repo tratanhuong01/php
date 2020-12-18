@@ -1,0 +1,200 @@
+.tt-sp {
+    width: 30px;
+    margin: 0em 2em;
+    background-color: white;
+    border: none;
+}
+#modalsp {
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+}
+#container-product {
+	width: 60%;
+	display: flex;
+	box-sizing: border-box;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	position: fixed;
+	z-index: 777;
+	padding: 4em 0em;
+}
+.product-left11 {
+	width: 35%;
+	border: 1px solid #E6E6FA;
+	height: 400px;
+}
+.product-left11 img {
+	width: 100%;
+	padding: 1em;
+	object-fit: cover;
+	height: 360px;
+}
+.product-center-one {
+	width: 10%;
+	margin: 0em 1em;
+}
+.product-center-one img {
+	width: 100%;
+	height: 88px;
+	padding: 10%;
+	border: 1px solid #E6E6FA;
+	margin-bottom: 2px;
+}
+.product-center-one img:hover {
+	border: 0.5px solid #1E9E74;
+	transform: scale(1.2);
+}
+.product-center-two {
+	width: 55%;
+}
+.product-right11 {
+	width: 23%;
+	font-family: serif;
+}
+.size-product {
+	margin: 15px 0px;
+}
+.size-product button {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	padding: 2px;
+	border: 1px solid;
+	margin: 5px;
+}
+
+#number-product-main {
+	width: 100%;
+	margin: 1em 0em;
+	display: flex;
+	align-items: center;
+}
+.number-product-left11 {
+	width: 40%;
+}
+.number-product-left11 button {
+	background: none;
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+}
+.number-product-left11 button:hover {
+	font-weight: bold;
+	color: #1E9E74;
+	border: 3px solid #1E9E74;
+}
+.number-product-left11 input {
+	width: 4em;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-left: none;
+	border-right: none;
+	text-align: center;
+}
+.number-product-right11 {
+	width: 60%;
+}
+.number-product-right11 button {
+	width: 85%;
+	padding: 10px;
+	border: none;
+	background-color: #1E9E74;
+	font-weight: bold;
+	color: white;
+	border-radius: 5px;
+}
+.product-right11 ul li {
+	list-style-type: none;
+	display: flex;
+	padding: 10px;
+	border: 1px solid #E6E6FA;
+	cursor: pointer;
+}
+.product-right11 ul li:hover {
+	background-color: #1E9E74;
+	color: white;
+}
+.product-right11 ul li:hover i {
+	color: white;
+}
+.icon-product-right11 i {
+	font-size: 40px;
+	color: #1E9E74;
+	padding: 10px 10px 10px 0px;
+}
+.information-about-product {
+	width: 100%;
+	display: flex;
+}
+.information-about-product-left11 {
+	width: 77%;
+}
+.information-about-product-left11 ul {
+	margin-bottom: 2em;
+}
+.information-about-product-right11 {
+	width: 23%;
+	text-align: center;
+	font-size: 25px;
+}
+.three-infor-product ul li {
+	list-style-type: none;
+	display: inline;
+	font-size: 20px;
+	padding: 8px 30px 8px 0px;
+}
+.three-infor-product ul li a {
+	color: black;
+	text-decoration: none;
+}
+.buy-now button {
+	background-color: seagreen;
+	width: 70%;
+	margin: auto;
+	padding: 10px;
+	border: none;
+	margin: 1em 0em;
+	color: black;
+	font-weight: bold;
+	border-radius: 50px;
+}
+.buy-now button:hover {
+	background-color: #1E9E74;
+	color: white;
+	transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#turn-off-modal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-bottom: 1px solid #ccc;
+}
+#turn-off-modal button {
+	font-weight: bold;
+	padding: 4px 8px;
+	border: 2px solid #1E9E74;
+	background-color: white;
+}
+#turn-off-modal button:hover {
+	color: white;
+	background-color: #1E9E74;
+	
+}
+.color-product button {
+    width: 60px;
+    border: 0;
+    background-color: papayawhip;
+    padding: 5px;
+    margin: 5px;
+}
+#loading-product {
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%,-50%);
+	font-size: 60px;
+}

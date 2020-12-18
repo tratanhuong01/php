@@ -1,0 +1,262 @@
+#header {
+	width: 100%;
+	display: flex;
+	padding: 5px 0px;
+}
+#header-web  {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	background-color: white !important;
+}
+#menu ul li img {
+    padding: 10px;
+}
+.menu-hide-home {
+	display: none;
+}
+.menu-hide-home i {
+	font-size: 1cm;
+	cursor: pointer;
+}
+#logo {
+	width: 15%;
+	text-align: center;
+	height: 100%;
+}
+#logo img {
+	width: 100%;
+	top: 10px;
+	height: 70%;
+	object-fit: contain;
+	position: relative;
+}
+#menu {
+	width: 35%;
+	padding-left: 30px;
+	line-height: normal;
+}
+#menu ul {
+	width: 100%;
+	display: flex;
+	list-style-type: none;
+	margin: 0;
+}
+#menu ul li {
+	width: 20%;
+	position: relative;
+	text-align: center;
+}
+#menu ul li a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	display: block;
+}
+#menu ul li a:hover {
+	color: #1E9E74;
+}
+#menu ul li > .sub-menu {
+	flex-direction: column-reverse;
+	list-style-type: none;
+	display: none;
+}
+#menu ul li .sub-menu {
+	width: 230px !important;
+	position: absolute !important;
+	top: 65px !important;
+	line-height: normal;
+	text-align: left;
+}
+.icon_i {
+	width: 60px;
+	text-align: center;
+}
+#menu ul li .sub-menu li i {
+
+font-size: 30px;
+
+width: 34px;
+}
+#menu ul li .sub-menu li {
+	width: 225px;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+}
+#menu ul li ul.sub-menu li .sub-menu1 {
+	position: absolute;
+	top: 0;
+	left: 142px;
+	flex-direction:column;
+	background-color:white;
+	border-radius: 10px;
+	width:150px;
+	display: none;
+}
+#menu ul li ul.sub-menu li {
+}
+#menu ul li ul.sub-menu li:hover > .sub-menu1{
+	display: block;
+	background-color: white;
+}
+#menu ul li:hover .sub-menu {
+	display: block;
+	border-radius: 10px;
+	background-color: white;
+	transition: ease-in 10s;
+}
+#menu ul li .sub-menu li a {
+	padding: 4px 0px;
+	display: flex;
+}
+#search-header {
+	width: 15%;
+	top: 25%;
+	position: relative;
+	margin: 0px 0px 0px 40px;
+	height: 75%;
+}
+#search-header input {
+	width: 87%;
+	padding: 8px;
+	line-height: normal;
+	border: none;
+	background-color: white;
+}
+#search-header input:hover {
+	border: 1px solid black;
+	}
+#search-header button {
+	width: 13%;
+	border: none;
+	line-height: normal;
+	padding: 8px;
+	background-color: #FDF1F3;
+	position: absolute;
+	right: 28px;
+	top: 0;
+}
+#header-right {
+	width: 35%;
+	display: flex;
+	line-height: normal;
+}
+#title-product h2,h6 {
+	text-align: center;
+	padding-bottom: 8px;
+}
+#title-product h2,h6:hover {
+	color: #1E9E74;
+}
+#circleuser {
+	padding-left: 30px;
+	width: 20%;
+}
+#circleuser i {
+}
+#loginandsign {
+	position: relative;
+}
+#loginandsign a {
+	text-decoration: none;
+	color: black;
+}
+#loginandsign a:hover {
+	color: #1E9E74;
+}
+#cart {
+	width: 18%;
+	position: relative;
+}
+#cart i {
+	font-size: 40px;
+	line-height: 100px;
+	color: #1E9E74;
+}
+.loginwith {
+    width: 230px;
+    height: 160px;
+    background-color: white;
+    text-align: center;
+    display: none;
+    position: absolute;
+    top: 80px;
+    border-radius: 10px;
+}
+.loginwith img {
+	width: 200px;
+	height: 50px;
+	border-radius: 10px;
+	object-fit: cover;
+	padding-top: 10px;
+}
+#dong-menu {
+	display: none;
+	cursor: pointer;
+}
+#dong-menu:hover {
+	color: white;
+	background-color: #1E9E74;
+}
+#input-responsive {
+	display: none;
+}
+#circleuser i {
+	font-size: 30px;
+	padding: 20px 20px;
+	color: #1E9E74;
+}
+#loginandsign a {
+	text-decoration: none;
+	color: black;
+}
+#loginandsign a:hover {
+	color: #1E9E74;
+}
+#cart i {
+	font-size: 40px;
+	color: #1E9E74;
+	position: absolute;
+	top: -15px;
+}
+#number-cart {
+	position: absolute;
+	top: 10px;
+	width: 25px;
+	height: 25px;
+	border-radius: 20px;
+	border: none;
+	background-color: #FF5722;
+	text-align: center;
+	padding-top: 2px;
+	left: 30px;
+	color: white;
+	font-weight: bold;
+}
+b#blogin {
+    position: absolute;
+    top: 25px;
+    left: 80px;
+}
+
+b#bsignup {
+    position: absolute;
+    top: 25px;
+    left: 0;
+}
+#loginandsign {
+	width: 63%;
+}
+.wrapper {
+	top: 100px;
+}
+#menu ul li a i {
+    font-size: 30px;
+    padding: 10px 0px;
+}
+#menu ul li a:hover {
+    color: #1E9E74;
+}
+.name_i {
+	line-height: 50px;
+}

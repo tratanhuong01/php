@@ -1,0 +1,343 @@
+@media screen and (max-width: 1260px){
+    .profile-left-header-left {
+        width: 35%;
+    }
+    .profile-left-header-right {
+        width: 65%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .middle {
+        display: none;
+    }
+    .menu-hide-home {
+        padding: 10px 85px;
+    }
+    #web {
+        width: 100%;
+    }
+    .wrapper {
+        width: 90%;
+    }
+    #menu {
+        display: none;
+    }
+    #frist-content {
+        width: 90%;
+    }
+    #loginandsign {
+        display: none;
+    }
+    .menu-hide-home {
+        width: 35%;
+        display: block;
+        padding-left: 3em;
+    }
+    #input-responsive {
+        display: block;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        background-color: #33A698;
+    }
+    #input-responsive input {
+        padding: 8px 8px;
+        width: 80%;
+        margin: 4px 0px;
+    }
+    #search-header {
+        display: none;
+    }
+    #logo {
+        width: 30%;
+    }
+    #logo img {
+        width: 80%;
+    }
+    #circleuser {
+        width: 100%;
+    }
+    #cart {
+        width: 20%;
+        margin-right: 48px;
+        text-align: right;
+    }
+    #footer-search {
+        width: 100%;
+        display: flex;
+    }
+    #footer-search input {
+        width: 51%;
+    }
+     #footer-search button {
+        width: 49%;
+    }
+    #modal-contact-one {
+        width: 25%;
+    }
+    #full-modal-contact-two {
+        width: 35%;
+    }
+    #fullmess {
+        width: 35%;
+    }
+    .profile-left-header-left {
+        width: 40%;
+    }
+    .profile-left-header-right {
+        width: 60%;
+    }
+    #header-right {
+        width: 35%;
+    }
+    #menu {
+        width: 100%;
+        display: none !important;
+        position: absolute;
+        margin: 0;
+    }
+    #menu ul li {
+        width: 100%;
+        padding: 1em 0em;
+        cursor: pointer;
+    }
+    #menu ul {
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        /* height: 500px; */
+    }
+    #menu ul {
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        /* height: 500px; */
+    }
+    #dong-menu {
+        display: block;
+        font-size: 16px;
+        position: absolute;
+        right: 20px;
+        padding: 4px;
+        border: 2px solid #1E9E74;
+        top: 210px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 90%!important;
+    }
+    #footer {
+        width: 90%;
+    }
+    #web {
+        width: 100%;
+    }
+    .wrapper {
+        width: 100% !important;
+    }
+    #title-product {
+        padding-top: 3em;
+    }
+    #frist-content {
+        width: 95%;
+    }
+    .middle {
+        display: none;
+    }
+    .right {
+        display: none;
+    }
+    #footer {
+        width: 95%;
+        flex-direction: column;
+    }
+    .left {
+        width: 100%;
+    }
+    .right-end {
+        padding-top: 30px;
+        width: 100%;
+    }
+    #footer-search input {
+        width: 50%
+    }
+     #footer-search button {
+        width: 25%
+    }
+    .profile-left-head {
+        width: 100%;
+        display: flex;
+        margin-bottom: 1em;
+    }
+    .profile-right {
+        display: none;
+    }
+    .profile-left {
+        width: 30%;
+    }
+    .get-two-profile {
+        width: 100%;
+    }
+    .profile-middle {
+        width: 100%;
+    }
+    .save-profile {
+        padding: 8px 20px;
+        margin: 1em 10em;
+    } 
+    .profile-radio select {
+        padding: 6px 10px;
+        border: none;
+    }
+    .profile-left-header-right {
+        padding-left: 10px;
+    }
+    #modal-contact-one {
+        width: 33%;
+    }
+    #full-modal-contact-two {
+        width: 40%;
+    }
+    #fullmess {
+        width: 40%;
+    }
+    #circleuser {
+        width: 100%;
+    }
+    .menu-hide-home {
+        width: 30%;
+        padding: 10px 40px;
+    }
+    #logo img {
+        width: 65%;
+        padding-left: 0;
+    }
+    #header-right {
+        width: 40%;
+    }
+    .avatar-myacc {
+        width: 25%;
+    }
+    #cart {
+        width: 35%;
+        padding-right: 40px;
+        margin: 0;
+    }
+    .usernam-myacc {
+        width: 40%;
+    }
+    #header-web {
+        width: 100%;
+    }
+    #header-right {
+        width: 40%;
+    }
+    
+}
+@media only screen and (max-width: 520px) {
+    #modal-contact-one {
+        display: none!important;
+    }
+    .name-product:hover .view-modal-product {
+        display: none;
+    }
+}
+@media only screen and (max-width: 426px) 
+{
+    .buy-now {
+        display: none;
+    }
+    .menu-hide-home {
+        width: 20%;
+        padding: 10px 30px;
+    }
+    #logo {
+        width: 40%;
+        text-align: center;
+    }
+    #logo img {
+        padding: 0;
+        width: 70%;
+    }
+    #circleuser {
+        width: 100%;
+        padding-left: 20px;
+    }
+    #circleuser i {
+        padding:0;
+    }
+    .fashion-star {
+        width: 100%;
+    }
+    .fashion-star img {
+        width: 170%;
+        height: auto !important;
+        object-fit: contain;
+    }
+    #footer {
+        width: 90%;
+    }
+    #footer-search button {
+        width: 36%;
+    }
+    #footer-search input {
+        width: 60%;
+    }
+    .avatar-myacc {
+
+width: 50%;
+
+}
+    .usernam-myacc {
+        width: 50%;
+        display: none;
+    }
+    .profile-middle {
+        display: none;
+    }
+    .profile-left {
+        width: 100%;
+    }
+    .get-two-profile {
+        display: none;
+    }
+    .profile-left-header-left {
+        width: 30%;
+    }
+    .profile-left-header-right {
+        
+width: 70%;
+    }
+    .profile-acc {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    #title-product {
+        padding-top: 0;
+    }
+    #modal-contact-one {
+        display: none;
+    }
+}
+@media only screen and (max-width: 375px) {
+    #footer-search input {
+        width: 59%;
+    }
+    #footer-search button {
+        width: 41%;
+    }
+    .cost {
+        height: 76px;
+        display: grid;
+    }
+    
+}
+@media only screen and (max-width:321px) {
+    .profile-left-header-left {
+        width: 20%;
+    }
+    .profile-left-header-right {
+        
+    }
+}
