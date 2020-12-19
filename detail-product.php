@@ -46,84 +46,41 @@
         <!-- Back To Top -->
         <i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         <i id="loading-slide" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        <div id="modalsp">
-            <div id="container-product">
-                <div id="turn-off-modal">
-                    <button onclick="closeModal()">x</button>
-                </div>
-                <div class="product-left11">
-                    <img id="changePicture" src="images/images-product/1h.PNG">
-                </div>
-                <div class="product-center-one11">
-                    <img onclick="changePic1()" src="images/images-product/1h.PNG">
-                    <img onclick="changePic2()" src="images/images-product/101.png">
-                    <img onclick="changePic3()" src="images/images-product/102.PNG">
-                    <img onclick="changePic4()" src="images/images-product/103.PNG">
-                </div>
-                <div class="product-center-two11">
-                    <h3>#000000</h3>
-                    <div style="display: flex;width: 100%;height: 40px;line-height: 40px;">
-                        <div id="ngang1">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div id="thuonghieu">
-                            <b style="font-size: 20px;">Thương Hiệu : <b style="color: red;">VEILISR</b></b>
-                        </div>
-                    </div>
-                    <p style="color: red;font-size: 20px;margin: 0;padding: 16px 0px;">299.000đ&nbsp;&nbsp;&nbsp;
-                        <strike style="font-size: 12px;color: rgb(34, 32, 32);">320.000đ</strike></p>
-                    <i>Mô tả đang cập nhật</i>
-                    <hr>
-                    <p><b>Kích Thước</b></p>
-                    <div class="size-product">
-                        <button type="button" data="size39">39</button>
-                        <button type="button" data="size40">40</button>
-                        <button type="button" data="size41">41</button>
-                    </div>
-                    <p><b>Số Lượng</b></p>
-                    <div id="number-product-main">
-                        <div class="number-product-left11">
-                            <button onclick="giamSoLuong()" id="tang" type="button">--</button>
-                            <input id="dulieu" type="text" value="1">
-                            <button onclick="tangSoLuong()" id="giam" type="button">+</button>
-                        </div>
-                        <div class="number-product-right11">
-                            <button onclick="addCart()" type="button">Thêm vào giỏ hàng</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!--Modal-->
     <div id="web">
-        <?php include 'header.php'; ?>
-        <div id="frist-content">
-            <div><a href="trangchu.html">Trang Chủ</a>
+        <?php include 'header.php'; include_once 'model/function.php'?>
+        <?php if (isset($_REQUEST['IDSP'])) { ?>
+            <?php $sp = getSanPhamByID($_REQUEST['IDSP']); ?>
+            <div id="frist-content">
+            <div><a href="index.php">Trang Chủ</a>
                 &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
-                <a href="gioithieu.html">Sản Phẩm</a>
+                <a href="product.php">Sản Phẩm</a>
                 &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
-                <a style="color: #1E9E74;" href="#">#000000</a>
+                <a style="color: #1E9E74;" href="detail-product.php?IDSP=<?php echo $_REQUEST['IDSP']; ?>"><?php echo $sp->getTenSanPham(); ?></a>
             </div>
         </div>
         <div class="wrapper">
             <div class="container-product">
                 <div id="full-content-ten">
                     <div class="product-left">
-                        <img id="changePicture1" src="images/images-product/1h.PNG">
+                        <img id="changePicture1" 
+                src="images/images-product/<?php echo $sp->getAnhSanPham().$sp->getIDMau().".png" ?>">
                     </div>
-                    <div class="product-center-one">
-                        <img onclick="changePic11()" src="images/images-product/1h.png">
-                        <img onclick="changePic22()" src="images/images-product/101.PNG">
-                        <img onclick="changePic33()" src="images/images-product/102.PNG">
-                        <img onclick="changePic44()" src="images/images-product/103.PNG">
+                    
+                    <div style="width: 20%;">
+                        <button class="tt-sp"><i class="fas fa-chevron-up"></i></button>
+                        <div class="product-center-one">
+                        <?php include_once 'model/modalProduct.php'; 
+                            include_once 'model/function.php'; 
+                            echo taoHinh(getMau($sp->getIDSanPham()),$sp->getAnhSanPham());
+                        ?>
+                        </div>
+                        <button  class="tt-sp" onclick="nextProduct()"><i class="fas fa-chevron-down"></i></button>
                     </div>
+                    
                 </div>
                 <div class="product-center-two">
-                    <h3>#000000</h3>
+                    <h3><?php echo $sp->getTenSanPham(); ?></h3>
                     <div id="ngang">
                         <div id="ngang1">
                             <i class="fas fa-star"></i>
@@ -133,23 +90,27 @@
                             <i class="fas fa-star"></i>
                         </div>
                         <div id="thuonghieu">
-                            <b style="font-size: 20px;">Thương Hiệu : <b style="color: red;">VEILISR</b></b>
+                            <b style="font-size: 20px;">Thương Hiệu : <b style="color: red;"><?php echo $sp->getThuongHieu(); ?></b></b>
                         </div>
                     </div>
                     <div>
-                        <b style="color: red;font-size: 20px;">299.000đ&nbsp;&nbsp;&nbsp;</b> <strike
-                            style="font-size: 12px;color: rgb(34, 32, 32);">320.000đ</strike></p>
+                        <b style="color: red;font-size: 20px;">
+                        <?php echo number_format($sp->getDonGia() * ((100-$sp->getGiam())/100)) ?>đ
+                        &nbsp;&nbsp;&nbsp;</b> <strike
+                            style="font-size: 12px;color: rgb(34, 32, 32);">
+                            <?php echo number_format($sp->getDonGia()); ?>đ</strike></p>
                     </div>
                     <div>
                         <i>Mô tả đang cập nhật</i>
                     </div>
                     <hr>
                     <p><b>Kích Thước</b></p>
-                    <div class="size-product">
-                        <button type="button" data="size39">39</button>
-                        <button type="button" data="size40">40</button>
-                        <button type="button" data="size41">41</button>
+                    <div class="color-product">
+                        <?php echo loadBoNho(getBoNho($sp->getIDSanPham())); ?>
                     </div>
+                    <div class="size-product">
+                        <?php echo loadMau(getMau($sp->getIDSanPham())); ?>
+                    </div>'
                     <p><b>Số Lượng</b></p>
                     <div id="number-product-main">
                         <div class="number-product-left">
@@ -513,6 +474,7 @@
             </div>
             <?php include 'footer.php'; ?>
         </div>
+        <?php } ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

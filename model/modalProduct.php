@@ -1,27 +1,23 @@
 <?php 
 	
-	function modal($imgMain,$img1,$img2,$img3,$img4,$name,$thuonghieu,$dongia,$giam) {
+	function modal($sp,$arrBoNho,$arrMau) {
 		$s = '<div id="container-product">
 			<div id="turn-off-modal">
 				<button onclick="closeModal()">x</button>
 			</div>
 			<div class="product-left11">
-				<img id="changePicture" src="images/images-product/'. $imgMain.'">
+				<img id="changePicture" 
+				src="images/images-product/'. $sp->getAnhSanPham(). $sp->getIDMau() .'.png">
 			</div>
 			<div class="product-center-one">
 				<button class="tt-sp"><i class="fas fa-chevron-up"></i></button>
-				<div style="width:100%;height:360px;overflow:hidden;">'.
-					taoHinh($img1) . " " .
-					taoHinh($img2) . " " .
-					taoHinh($img3) . " " .
-					taoHinh($img4) . " " .
-					taoHinh($img4) . " " .
-					taoHinh($img4) . " "
+				<div style="width:100%;height:400px;overflow:hidden;">'.
+					taoHinh($arrMau,$sp->getAnhSanPham()) . " " 
 				.'</div>
 				<button  class="tt-sp" onclick="nextProduct()"><i class="fas fa-chevron-down"></i></button>
 			</div>
 			<div class="product-center-two">
-				<h3>'. $name .'</h3>
+				<h3>'. $sp->getTenSanPham() .'</h3>
 				<div style="display: flex;width: 100%;max-height: 40px;line-height: 40px;">
 					<div id="ngang1">
 						<i class="fas fa-star"></i>
@@ -31,25 +27,25 @@
 						<i class="fas fa-star"></i>
 					</div>
 					<div id="thuonghieu">
-						<b style="font-size: 20px;">Thương Hiệu : <b style="color: red;">'. $thuonghieu .'</b></b>
+						<b style="font-size: 20px;">Thương Hiệu : 
+						<b style="color: red;">'. $sp->getThuongHieu() .'</b></b>
 					</div>
 				</div>
-				<p style="color: red;font-size: 20px;margin: 0;padding: 16px 0px;">'. $dongia.'đ&nbsp;&nbsp;&nbsp; <strike
-						style="font-size: 12px;color: rgb(34, 32, 32);">'.$giam.'đ</strike></p>
+				<p style="color: red;font-size: 20px;margin: 0;padding: 16px 0px;">'
+				. number_format(((100-$sp->getGiam())/100)*$sp->getDonGia()) .'đ&nbsp;&nbsp;&nbsp; <strike
+						style="font-size: 12px;color: rgb(34, 32, 32);">'
+						.number_format($sp->getDonGia()).
+						'đ</strike></p>
 				<i>Mô tả đang cập nhật</i>
 				<hr>
 				<p><b>Kích Thước</b></p>'.
-				'<div class="color-product">
-					<button type="button">256GB</button>
-					<button type="button">128GB</button>
-					<button type="button">64GB</button>
-				</div>
-				<div class="size-product">
-					<button type="button" style="background-color:red;"></button>
-					<button type="button" style="background-color:yellow;"></button>
-					<button type="button" style="background-color:black;"></button>
-				</div>'
-				
+				'<div class="color-product">'.
+					loadBoNho($arrBoNho)
+					
+				.'</div>
+				<div class="size-product">'.
+					loadMau($arrMau)
+				.'</div>'
 				.'<p><b>Số Lượng</b></p>
 				<div id="number-product-main">
 					<div class="number-product-left11">
@@ -65,9 +61,26 @@
 		</div>';
 		return $s;
 	}
-	function taoHinh($img1) {
-		return '<img style="display:block;" class="imgPsProduct" 
-		onclick="changePic'."('".$img1."')".'" src="images/images-product/'. $img1 .'">';
+	function taoHinh($arr,$str) {
+		$string = "";
+		foreach ($arr as $key => $value) {
+			$string .= '<img style="display:block;" class="imgPsProduct" 
+			onclick="changePic'."('$str".$value[0].".png')".'" src="images/images-product/'.$str. $value[0] .'.png">' . " ";
+		}
+		return $string;
 	}
-	echo taoHinh("");
+	function loadBoNho($arr) {
+		$string = "";
+		foreach ($arr as $key => $value) {
+			$string .= '<button type="button">'. $value .'</button>' . " ";
+		}
+		return $string;
+	}
+	function loadMau($arr) {
+		$string = "";
+		foreach ($arr as $key => $value) {
+			$string .= '<button type="button" style="background-color:'.$value[1].';"></button>' . " ";
+		}
+		return $string;
+	}
 ?>

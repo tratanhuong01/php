@@ -132,4 +132,43 @@
 		}
 		return $sp;
 	}
+	function getBoNho($idSanPham) {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT DISTINCT BoNho FROM `sanpham` WHERE IDDongSanPham = (SELECT IDDongSanPham FROM sanpham WHERE IDSanPham = '".$idSanPham . "')";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			$i = 0;
+			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$arr[$i] = $row['BoNho'];
+				$i++;
+			}
+			return $arr;
+		} catch (Exception $e) {
+			$e->getMessage();
+		}
+		return $arr;
+	}
+	function getMau($idSanPham) {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT DISTINCT sanpham.IDMau ,mausanpham.rgbcolor 
+			FROM sanpham INNER JOIN mausanpham 
+			ON sanpham.IDMau = mausanpham.IDMau WHERE sanpham.IDDongSanPham = (SELECT IDDongSanPham FROM sanpham WHERE IDSanPham = '".$idSanPham . "')";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			$i = 0;
+			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$arr[$i][0] = $row['IDMau'];
+				$arr[$i][1] = $row['rgbcolor'];
+				$i++;
+			}
+			return $arr;
+		} catch (Exception $e) {
+			$e->getMessage();
+		}
+		return $arr;
+	}
 ?>

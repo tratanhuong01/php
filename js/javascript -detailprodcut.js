@@ -67,9 +67,9 @@ function giamSoLuong()
 }
 
 /* JavaScript Thay Đổi Số Lượng */
-function changePic11() {
+function changePic(str) {
     var thayDoiHinhAnh = document.getElementById("changePicture1")
-    thayDoiHinhAnh.src = 'images/images-product/1h.PNG'
+    thayDoiHinhAnh.src = 'images/images-product/' + str;
 }
 function changePic22() {
     var thayDoiHinhAnh = document.getElementById("changePicture1")
@@ -295,4 +295,38 @@ function CloseGioHang()
     var numberTo = document.getElementById("number-cart")
     productAdded.style.display = 'none'
     opacityweb.style.opacity = '1'
+}
+function previousProduct() {
+    var main = document.getElementsByClassName('product-center-one')[0];
+    var full = main.querySelectorAll('.imgPsProduct');
+    if (find() == 0) {
+
+    }
+    else {
+        full[find() + 5].style.display = 'none';
+        for (var i = find() + 4; i > find(); i--) {
+            full[i].style.display = 'block';
+        }
+    }
+}
+function nextProduct() {
+    var main = document.getElementsByClassName('product-center-one')[0];
+    var full = main.querySelectorAll('.imgPsProduct');
+    full[find()].style.display = 'none';
+    for (var i = find() + 1; i < find() + 4; i++) {
+        full[i].style.display = 'block';
+    }
+}
+function find() {
+    var main = document.getElementsByClassName('product-center-one')[0];
+    var full = main.querySelectorAll('.imgPsProduct');
+    var num = -1;
+    for (var i = 0; i < full.length; i++) {
+        if (full[i].style.display == 'block') {
+            num = i;
+            return num;
+            break;
+        }
+    }
+    return num;
 }

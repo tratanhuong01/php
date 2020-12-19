@@ -114,21 +114,22 @@
 				?>
 						<div class="name-product wow bounceInUp slow">
 							<a href="detail-product.html"><img src="images/images-product/<?php 
-									echo explode("-", $value->getAnhSanPham())[0]; ?>"
+									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
 									data-zoom-image="" id="zoom"><br></a>
 							<div class="view-modal-product">
 								<button onclick="openModal('<?php echo $value->getIDSanPham(); ?>')" type="button"><i class="fa fa-search"
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
-								<a href="detail-product.html"><b><?php echo $value->getTenSanPham(); ?></b></a><br>
+								<a href="detail-product.php?IDSP=<?php echo $value->getIDSanPham(); ?>"><b><?php echo $value->getTenSanPham(); ?></b></a><br>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
 										 <strike><?php echo number_format($value->getDonGia()); ?>đ</strike>
 								</div>
 								<div class="buy-now">
-									<button onclick="window.location.href = 'detail-product.html'">Mua Ngay</button>
+									<button onclick="window.location.href = 
+									'detail-product.php?IDSP=<?php echo $value->getIDSanPham(); ?>'">Mua Ngay</button>
 								</div>
 							</div>
 						</div>
