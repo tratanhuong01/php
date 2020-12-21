@@ -93,7 +93,7 @@
 			<a href="trangchu.html"><img src="images/logo.png"></a>
 		</div>
 		<div id="search-header">
-			<input type="text" name="text" placeholder="Nhập tên sản phẩm.."><button type="submit"><i
+			<input id="inputss" type="text" name="text" placeholder="Nhập tên sản phẩm.." value=""><button type="submit"><i
 					class="fa fa-search" aria-hidden="true"></i></button>
 		</div>
 		<div id="header-right">
@@ -111,7 +111,10 @@
 				</div>
 				<div id="cart">
 					<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span
-							id="number-cart">0</span>
+							id="number-cart"><?php 
+									include_once 'model/function.php';
+									echo getNumGioHangByID($_SESSION['user']->getIDKhachHang());
+							?></span>
 					</a>
 					
 				</div>
@@ -124,8 +127,7 @@
 					<a href="register.php"><b id="bsignup">Đăng Kí</b></a>
 				</div>
 				<div id="cart">
-					<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span
-							id="number-cart">0</span>
+					<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span id="number-cart">0</span>
 					</a>
 					
 				</div>

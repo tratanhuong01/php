@@ -7,13 +7,34 @@
 
 <h2>The XMLHttpRequest Object</h2>
 
-<button type="button" onclick="loadDoc()">Request data</button>
+<button type="button" onclick="addCart()">Request data</button>
 
-<div id="demo">
-
+<div id="cart-web">
+	<div>
+		hello
+	</div>
 </div>
-
-<script>
+ <?php $message = "Hello Folks"; ?> 
+<script>  
+  function addCart()
+{
+    var demo = document.getElementById('cart-web');
+    var child = demo.lastElementChild;  
+    while (child) { 
+        demo.removeChild(child); 
+        child = demo.lastElementChild; 
+    } 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            demo.innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "CheckHaveLogin.php?state=1", true);
+    xhttp.send();
+}
+</script>
+<!-- <script>
 function loadDoc() {
 	var xhttp = new XMLHttpRequest();
   	xhttp.onreadystatechange = function() {
@@ -42,6 +63,6 @@ function loadDoc() {
 		</script>
 		<script type="text/javascript" src="js/javascript.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script type="text/javascript" src="js/process-form.js"></script>
+		<script type="text/javascript" src="js/process-form.js"></script> -->
 </body>
 </html>

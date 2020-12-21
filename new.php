@@ -17,7 +17,9 @@
 	<link rel="stylesheet" type="text/css" href="css/loginandsignup.css">
 </head>
 <body>
-	<?php session_start(); ?>
+	<?php include_once 'model/Function.php';
+	include_once 'model/KhachHang.php';
+	session_start(); ?>
 	<div id="product-bought">
 		<div id="added">
 			<p><b><i class="fas fa-check"></i>&nbsp;&nbsp;Sản Phẩm Vừa Được Thêm Vào Giỏ Hàng</b></p>

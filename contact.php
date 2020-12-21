@@ -16,6 +16,9 @@
 	<link rel="stylesheet" type="text/css" href="css/responsive-lienhe.css">
 </head>
 <body>
+	<?php include_once 'model/Function.php';
+	include_once 'model/KhachHang.php';
+	session_start(); ?>
 	<!-- Back To Top -->
 	<i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
 	<div id="web">

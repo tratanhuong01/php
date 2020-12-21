@@ -48,17 +48,17 @@
         <i id="loading-slide" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         <!--Modal-->
     <div id="web">
-        <?php include 'header.php'; include_once 'model/function.php'?>
-        <?php if (isset($_REQUEST['IDSP'])) { ?>
-            <?php $sp = getSanPhamByID($_REQUEST['IDSP']); ?>
+    <?php include 'header.php'; include_once 'model/function.php'?>
+    <?php if (isset($_REQUEST['IDSP'])) { ?>
+        <?php $sp = getSanPhamByID($_REQUEST['IDSP']); ?>
             <div id="frist-content">
-            <div><a href="index.php">Trang Chủ</a>
-                &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
-                <a href="product.php">Sản Phẩm</a>
-                &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
-                <a style="color: #1E9E74;" href="detail-product.php?IDSP=<?php echo $_REQUEST['IDSP']; ?>"><?php echo $sp->getTenSanPham(); ?></a>
+                <div><a href="index.php">Trang Chủ</a>
+                    &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
+                    <a href="product.php">Sản Phẩm</a>
+                    &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
+                    <a style="color: #1E9E74;" href="detail-product.php?IDSP=<?php echo $_REQUEST['IDSP']; ?>"><?php echo $sp->getTenSanPham(); ?></a>
+                </div>
             </div>
-        </div>
         <div class="wrapper">
             <div class="container-product">
                 <div id="full-content-ten">
@@ -178,38 +178,16 @@
             <div class="information-about-product">
                 <div id="information-about-product-left-one">
                     <div id="information-about-product-left">
-                        <span>
-                            <p>ĐÔI NÉT VỀ SẢN PHẨM CHÚNG TÔI</p>
-                            <p>Giày học sinh sinh viên giá rẻ, chất lượng phù hợp giá tiền - Các mẫu còn đủ size số
-                                cho cả nam nữ, các bạn cần tư vấn size có thể inbox trực tiếp để nhận bảng size giày
-                                tương ứng với chân của mình</p>
-                            <img src="">
-                            <p> - Giày cao 2-3 cm, đế giày thiết kế có ma sát tốt, kem dán chắc chắn nên thoải mái
-                                đi lại cũng như chơi thể thao, đi picnic, chạy nhảy, …
-
-                                - Phối đồ max xinh max ngầu với quần jean, quần vải , váy… đảm bảo nổi bật giữa đám
-                                đông
-
-                                5 LÝ DO BẠN NÊN MUA HÀNG CỦA CHÚNG TÔI
-
-                                - Nhận quà đi kèm sản phẩm ( móc khóa HÌNH GIÀY hoặc tất chân)
-
-                                - Thoải mái đổi size nếu không vừa chân ( tuy nhiên nếu các bạn chưa rõ về size thì
-                                nên inbox để nhân viên của shop có thể tư vấn size, hạn chế đổi size rất mất thời
-                                gian và tốn kém tiền của)
-
-                                - Cam kết giá rẻ nhất ( vì đây là giá bán sỉ rồi, shop không lấy lãi nhiều) - Sản
-                                phẩm được chụp ảnh thật 100%
-
-                                - Cam kết như hình
-
-                                – Chất lượng đảm bảo
-
-                                - Giao hàng và thanh toán tại nhà vô cùng an toàn tiện lợi</p>
-                        </span>
+                        
                         <br>
                         <div style="width:100%;text-align:center">
-                            <img src="images/images-product/1h.PNG">
+                            <img src="images/images-product/<?php 
+                            echo $sp->getAnhSanPham(). $sp->getIDMau() . ".png"
+                            ?>">
+                            <button style="border: none;background-color: blue;padding: 8px;
+                            margin: 8px 2em;color: white;font-weight: bold;">
+                                Xem thông tin cấu hình sản phẩm
+                            </button>
                         </div>
                         <span>
                             5 LÝ DO BẠN NÊN MUA HÀNG CỦA CHÚNG TÔI <br>

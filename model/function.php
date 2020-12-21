@@ -18,7 +18,7 @@
 			$diaChi,$gioiTinh,$ngaySinh]);
 			$stm_2 = $conn->prepare($sql_taiKhoan);
 			if (!$stm_2) {
-				$conn->ErrorInfo();
+				$conn->errorInfo();
 			}
 			$stm_2->execute([$idKhachHang,$matKhau]);
 		} catch (Exception $e) {
@@ -98,13 +98,14 @@
 		$arr = array();
 		try {
 			$conn = getConnection();
-			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau";
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau";
 			$stm = $conn->prepare($query);
 			$stm->execute();
 			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
 				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
 					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
-					$row['IDMau'],$row['TenMau'],$row['ThuongHieu']);
+					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
+					$row['BoNho'],$row['rgbcolor']);
 				$arr[$row['IDSanPham']] = $sp;
 			}
 			return $arr;
@@ -117,14 +118,15 @@
 		$sp = null;
 		try {
 			$conn = getConnection();
-			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau
 				WHERE sanpham.IDSanPham = '". $idSanPham ."'";
 			$stm = $conn->prepare($query);
 			$stm->execute();
 			if ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
 				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
 					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
-					$row['IDMau'],$row['TenMau'],$row['ThuongHieu']);
+					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
+					$row['BoNho'],$row['rgbcolor']);
 			}
 			return $sp;
 		} catch (Exception $e) {
@@ -170,5 +172,58 @@
 			$e->getMessage();
 		}
 		return $arr;
+	}
+	function insertGioHang($idSanPham,$idKhachHang,$soLuong) {
+		try {
+			$query = "INSERT INTO `giohang`(`IDSanPham`, `IDKhachHang`, `SoLuong`) VALUES (?,?,?)";
+			$conn = getConnection();
+			$stm = $conn->prepare($query);
+			if (!$stm) {
+				$conn->ErrorInfo();
+			}
+			$stm->execute([$idSanPham,$idKhachHang,$soLuong]);
+		} catch (Exception $e) {
+			$e->getMessage();
+		}
+	}
+	function getNumGioHangByID($idKhachHang) {
+		$count = 0;
+		try {
+			$query = "SELECT COUNT(*) AS SoLuong FROM giohang WHERE IDKhachHang = ?";
+			$conn = getConnection();
+			$stm = $conn->prepare($query);
+			if (!$stm) {
+				$conn->ErrorInfo();
+			}
+			$stm->execute([$idKhachHang]);
+			$count = $stm->fetchColumn();;
+			return $count;
+		} catch (Exception $e) { 
+			$e->getMessage();
+		}
+		return $count;
+	}
+	function getSPGioHangByID($idKhachHang) {
+		$count = 0;
+		try {
+			$query = "SELECT COUNT(*) FROM giohang WHERE IDKhachHang = ?";
+			$conn = getConnection();
+			$stm = $conn->prepare($query);
+			if (!$stm) {
+				$conn->ErrorInfo();
+			}
+			$stm->execute([$idKhachHang]);
+			$row = $stm->fetch(PDO::FETCH_ASSOC);
+			if (sizeof($row) == 0) {
+
+			}
+			else {
+				$count = $row['COUNT(*)'];
+			}
+			return $count;
+		} catch (Exception $e) { 
+			$e->getMessage();
+		}
+		return $count;
 	}
 ?>

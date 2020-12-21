@@ -25,43 +25,43 @@
 </head>
 
 <body>
+
 	<?php include_once 'model/Function.php';
 	include_once 'model/KhachHang.php';
 	session_start(); ?>
 	<i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
 	<i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-	<div id="product-bought">
-		<div id="added">
-			<p><b><i class="fas fa-check"></i>&nbsp;&nbsp;Sản Phẩm Vừa Được Thêm Vào Giỏ Hàng</b></p>
-			<hr>
-			<div class="added-one">
-				<div class="added-one-one">
-					<a href=""><img src="images/images-product/100.png"></a>
-				</div>
-				<div class="added-one-two">
-					<p>#000000</p>
-					<p><b style="color: red;">299.000đ</b></p>
-					<p>40</p>
-				</div>
-			</div>
-			<hr>
-			<p><i class="fas fa-chevron-right"></i>&nbsp;Giỏ Hàng Hiện Có <span>(20)</span>Sản Phẩm</p>
-			<button id="start-paid">Tiến Hành Thanh Toán &nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
-			<i onclick="CloseGioHang()" id="close-added" class="fas fa-times-circle"></i>
-		</div>
-	</div>
 	<div id="demo" style="width: 100%;">
-		<div id="modalsp">
+		<div id="modalsp" style="display: none;">
 		</div>
 	</div>
+	<div id="cart-web" style="width: 100%;">
+
+	</div>
+	
 	<div id="web">
+		<?php 
+			if (isset($_POST['muaHangClick'])) {
+				$soLuong = $_POST['num'];
+				$id = $_POST['id_sanpham'];
+				if (isset($_SESSION['user'])) {
+					$arr[0] = $soLuong;
+					$arr[1] = $id;
+					
+					$_SESSION['arrData'] = $arr;
+					include_once 'model/modalProduct.php';
+					echo dis();
+				}
+				else {
+					header('Location: login.php');
+				}
+			}
+		?>
 		<?php
 			include 'header.php';
 		?>
 		<?php include 'DiaglogMessage.php'; ?>
-		<div id="imaaaa" style="width: 100%;
-		height: 550px;">
-
+		<div id="imaaaa" style="width: 100%;height: 550px;">
 			<img style="width: 100%;height: 550px;" src="images/anhnen1.png">
 
 		</div>
@@ -69,35 +69,35 @@
 			<div id="type-shoes">
 				<ul style="margin: 0;">
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/iphone.png"></a><br>
 						<a href="#"><b>Iphone</b></a>
 					</li>
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/hp.png"></a><br>
 						<a href="#"><b>HP</b></a>
 					</li>
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/dell.png"></a><br>
 						<a href="#"><b>Dell</b></a>
 					</li>
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/xiaomi.png"></a><br>
 						<a href="#"><b>Xiaomi</b></a>
 					</li>
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/samsung.png"></a><br>
 						<a href="#"><b>Samsung</b></a>
 					</li>
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/macbook.png"></a><br>
 						<a href="#"><b>Macbook</b></a>
 					</li>
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/ipad.png"></a><br>
 						<a href="#"><b>Ipad</b></a>
 					</li>
 					<li>
-						<a href="#"><img src=""></a><br>
+						<a href="#"><img src="images/images-fashion/watch.png"></a><br>
 						<a href="#"><b>Watch</b></a>
 					</li>
 				</ul>
@@ -158,123 +158,6 @@
 						<button type="submit">Mua Ngay</button>
 					</div>
 				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/11.1.png"><br></a>
-					<a href="#"><b>Giày #000010</b></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 499.000đ</b>&nbsp;&nbsp;&nbsp;<strike>620.000đ</strike>
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/12.1.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000011</b></a>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 989.000đ</b>&nbsp;&nbsp;&nbsp;
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/14.1.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000012</b></a>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 1.650.000đ</b>&nbsp;&nbsp;&nbsp;
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/109.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000013</b></a>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 270.000đ</b>&nbsp;&nbsp;&nbsp;
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/15.1.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000014</b></a><br>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 490.000đ</b>
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/16.1.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000015</b></a>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 520.000đ</b>&nbsp;&nbsp;&nbsp;<strike>720.000đ</strike>
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/17.1.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000016</b></a>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 1.200.000đ</b>&nbsp;&nbsp;&nbsp;
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/18.1.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000017</b></a>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 229.000đ</b>&nbsp;&nbsp;&nbsp;<strike>240.000đ</strike>
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/110.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000018</b></a>
-					<div class="cost" style="font-size: 12px;">
-						<b>Giá : 160.000đ</b>&nbsp;&nbsp;&nbsp;<strike>180.000đ</strike>
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
 			</div>
 			<div id="title-product">
 				<h2>TIN MỚI NHẤT</h2>
@@ -282,39 +165,40 @@
 			</div>
 			<div id="news">
 				<div id="news-left">
-					<a href="detail-new4.html"><img src="images/images-news/1.png"></a>
+					<a href=""><img src="images/images-news/1.jpg"></a>
 					<div class="paddingof"><i class="fa fa-address-book" aria-hidden="true"> <b>Ego
 								Creative</b></i>&nbsp;&nbsp;&nbsp;<i class="fa fa-calendar"
 							aria-hidden="true"></i><b>03/10/2019</b></div>
-					<div class="paddingof"><a href="detail-new4.html"><b>Choáng ngợp với tủ giày trăm đôi</b></a></div>
-					<span class="paddingof">Văn Mai Hương là một mỹ nhân có niềm đam mê cực lớn với giày dép . Có từng
-						tiết lộ thú vui " săn " giày đẹp trong những chuyến lưu diễn hoặc đặt những mẫu giày mới nhất
-						qua một người bạn thân ở Anh .Mới đây...</span>
+					<div class="paddingof"><a href="detail-new4.html"><b>Phủ sóng 5G, người dùng iPhone hoang mang</b></a></div>
+					<span class="paddingof">Apple đang sa lầy trong cuộc chiến pháp lý kéo dài với Qualcomm, nhà sản xuất modem 5G hàng đầu hiện nay. Hiện Intel là đối tác tiềm năng nhất trong việc cung cấp modem 5G cho iPhone...</span>
 				</div>
 				<div class="news-right">
 					<div class="news-right-list">
-						<a href="detail-new.html"><img src="images/images-news/2.png"></a>
+						<a href=""><img src="images/images-news/2.jpg"></a>
 						<div class="paddingof"><i class="fa fa-calendar" aria-hidden="true"></i> <b>03/10/2019</b></div>
-						<div class="paddingof"><a href="detail-new.html"><b>Dép Puma Fenty mẫu mới nhất của
-									Rihanna</b></a></div>
+						<div class="paddingof"><a href="detail-new.html"><b>
+						<?php echo substr("Quá ấn tượng, OPPO Reno5 và Reno5 Pro đạt doanh thu gần 355 tỷ đong tại Trung Quốc chỉ sau 10 phút mở bán", 0,80) . "..."; ?>
+						</b></a></div>
 					</div>
 					<div class="news-right-list">
-						<a href="detail-new1.html"><img src="images/images-news/3.jpg"></a>
+						<a href=""><img src="images/images-news/3.jpg"></a>
 						<div class="paddingof"><i class="fa fa-calendar" aria-hidden="true"></i> <b>03/10/2019</b></div>
-						<div class="paddingof"><a href="detail-new1.html"><b>Thêm 5 đôi sneaker màu ngọt liệm</b></a>
+						<div class="paddingof"><a href="detail-new1.html"><b>
+							<?php echo substr("Đánh giá chi tiết iPhone 7 sau 4 năm ra mắt: Vẫn còn ngon lành và mang đến trải nghiệm không thể nào quên", 0,80)."..."; ?></b></a>
 						</div>
 					</div>
 					<div class="news-right-list">
-						<a href="detail-new2.html"><img src="images/images-news/4.jpg"></a>
+						<a href=""><img src="images/images-news/4.jpg"></a>
 						<div class="paddingof"><i class="fa fa-calendar" aria-hidden="true"></i> <b>03/10/2019</b></div>
-						<div class="paddingof"><a href="detail-new2.html"><b>Chọn giày dép lúc nào cũng vừa in
-									chân</b></a></div>
+						<div class="paddingof"><a href="detail-new2.html"><b>
+						<?php echo substr("10 mẫu smartphone 'hot hòn họt' giảm đến 2.5 triệu đáng mua cuối tuần này nhân dịp giáng sinh, bạn còn chờ chi, tậu về ngay thôi",0,80) ."..."; ?>
+						</b></a></div>
 					</div>
 					<div class="news-right-list">
-						<a href="detail-new3.html"><img src="images/images-news/5.jpg"></a>
+						<a href=""><img src="images/images-news/5.jpg"></a>
 						<div class="paddingof"><i class="fa fa-calendar" aria-hidden="true"></i> <b>03/10/2019</b></div>
-						<div class="paddingof"><a href="detail-new3.html"><b>Giới trẻ Việt rộ mốt đi dép cá rô
-									phi</b></a></div>
+						<div class="paddingof"><a href="detail-new3.html"><b>
+						<?php echo substr("Giật ngay deal 'hot hòn họt', săn Macbook Air 2017 với giá rẻ bất ngờ, giảm sốc 10% cùng nhiều quà tặng hấp dẫn dịp Noel này", 0,80) . "..."; ?></b></a></div>
 					</div>
 				</div>
 			</div>

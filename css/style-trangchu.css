@@ -38,6 +38,7 @@
 	width: 100px;
 	height: 100px;
 	object-fit: contain;
+	padding: 1em;
 }
 .title-product h2,h6 {
 	text-align: center;

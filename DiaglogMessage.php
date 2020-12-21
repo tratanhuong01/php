@@ -1,25 +1,4 @@
-<div id="product-bought">
-	<div id="added">
-		<form action="" method="POST">
-			<p><b><i class="fas fa-check"></i>&nbsp;&nbsp;Sản Phẩm Vừa Được Thêm Vào Giỏ Hàng</b></p>
-			<hr>
-			<div class="added-one">
-				<div class="added-one-one">
-					<a href=""><img src="images/images-product/100.png"></a>
-				</div>
-				<div class="added-one-two">
-					<p>#000000</p>
-					<p><b style="color: red;">299.000đ</b></p>
-					<p>40</p>
-				</div>
-			</div>
-			<hr>
-			<p><i class="fas fa-chevron-right"></i>&nbsp;Giỏ Hàng Hiện Có <span>(20)</span>Sản Phẩm</p>
-			<button id="start-paid">Tiến Hành Thanh Toán &nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
-			<i onclick="CloseGioHang()" id="close-added" class="fas fa-times-circle"></i>
-		</form>
-	</div>
-</div>
+
 <!--Mess Liên Hệ-->
 <div id="fullmess">
 	<div id="mess">
