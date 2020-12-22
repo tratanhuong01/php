@@ -1,5 +1,6 @@
 <?php 
 	include_once 'KhachHang.php';
+	include_once 'GioHang.php';
 	include_once 'SanPham.php';
 	include 'ConnectMySQL.php';
 	function insertTaiKhoan($idKhachHang,$ho,$ten,$email,$soDienThoai,
@@ -22,7 +23,7 @@
 			}
 			$stm_2->execute([$idKhachHang,$matKhau]);
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 	}
 	function taoID($tenBang,$tenID) {
@@ -38,7 +39,7 @@
 			$string = "KH" . $idNum;
 			return $string;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $string;
 	}
@@ -56,7 +57,7 @@
 				$idKhachHang = $row['IDKhachHang'];
 			return $idKhachHang;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $idKhachHang;
 	}
@@ -75,7 +76,7 @@
 						$row['DiaChi'],$row['GioiTinh'],$row['NgaySinh'],$row['MatKhau']);
 			return $kh;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $kh;
 	}
@@ -90,7 +91,7 @@
 			if ($count == 1 && !empty($row)) 
 				return false;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return true;
 	}
@@ -110,7 +111,7 @@
 			}
 			return $arr;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $arr;
 	}
@@ -130,7 +131,7 @@
 			}
 			return $sp;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $sp;
 	}
@@ -148,7 +149,7 @@
 			}
 			return $arr;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $arr;
 	}
@@ -169,7 +170,7 @@
 			}
 			return $arr;
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $arr;
 	}
@@ -183,7 +184,7 @@
 			}
 			$stm->execute([$idSanPham,$idKhachHang,$soLuong]);
 		} catch (Exception $e) {
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 	}
 	function getNumGioHangByID($idKhachHang) {
@@ -199,7 +200,7 @@
 			$count = $stm->fetchColumn();;
 			return $count;
 		} catch (Exception $e) { 
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $count;
 	}
@@ -222,8 +223,47 @@
 			}
 			return $count;
 		} catch (Exception $e) { 
-			$e->getMessage();
+			echo $e->getMessage();
 		}
 		return $count;
+	}
+	function getSanPhamC($idDongSanPham,$mau,$boNho) {
+		$sp = null;
+		try {
+			$conn = getConnection();
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau
+				WHERE sanpham.IDDongSanPham = ? AND sanpham.BoNho = ? AND 
+				sanpham.IDMau = ? ";
+			$stm = $conn->prepare($query);
+			$stm->execute([$idDongSanPham,$mau,$boNho]);
+			if ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
+					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
+					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
+					$row['BoNho'],$row['rgbcolor']);
+			}
+			return $sp;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $sp;
+	}
+	function getSanPhamByGioHang($idKhachHang) {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT giohang.STT,giohang.IDSanPham,sanpham.TenSanPham,sanpham.DonGia * ((100 - sanpham.Giam)/100) AS 'DonGia', giohang.SoLuong,sanpham.BoNho,sanpham.IDMau,sanpham.AnhSanPham,mausanpham.TenMau,giohang.IDKhachHang,CONCAT(khachhang.Ho,CONCAT(' ',khachhang.Ten)) AS 'HoTen' FROM giohang INNER JOIN sanpham ON giohang.IDSanPham = sanpham.IDSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau INNER JOIN khachhang ON giohang.IDKhachHang = khachhang.IDKhachHang 
+				WHERE giohang.IDKhachHang = ? ";
+			$stm = $conn->prepare($query);
+			$stm->execute([$idKhachHang]);
+			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$gh = new GioHang($row['STT'],$row['IDSanPham'],$row['TenSanPham'],$row['DonGia'],$row['SoLuong'],$row['BoNho'],
+					$row['IDMau'],$row['AnhSanPham'],$row['TenMau'],$row['IDKhachHang'],$row['HoTen']);
+				$arr[$row['STT']] = $gh;
+			}
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
 	}
 ?>

@@ -2,7 +2,7 @@
 class SanPham {
 	private $idSanPham;
 	private $tenSanPham;
-	private $idNhomSanPham;
+	private $idDongSanPham;
 	private $tenNhomSanPham;
 	private $donGia;
 	private $giam;
@@ -12,11 +12,11 @@ class SanPham {
 	private $thuongHieu;
     private $boNho;
     private $rbgcolor;
-	public function __construct($idSanPham, $tenSanPham, $idNhomSanPham, $tenNhomSanPham, $donGia, $giam, $anhSanPham, $idMau, $tenMau, $thuongHieu,$boNho,$rbgcolor)
+	public function __construct($idSanPham, $tenSanPham, $idDongSanPham, $tenNhomSanPham, $donGia, $giam, $anhSanPham, $idMau, $tenMau, $thuongHieu,$boNho,$rbgcolor)
 	{
 		$this->idSanPham = $idSanPham;
 		$this->tenSanPham = $tenSanPham;
-		$this->idNhomSanPham = $idNhomSanPham;
+		$this->idDongSanPham = $idDongSanPham;
 		$this->tenNhomSanPham = $tenNhomSanPham;
 		$this->donGia = $donGia;
 		$this->giam = $giam;
@@ -38,9 +38,9 @@ class SanPham {
         return $this->tenSanPham;
     }
 
-    public function getIdNhomSanPham()
+    public function getIDDongSanPham()
     {
-        return $this->idNhomSanPham;
+        return $this->idDongSanPham;
     }
 
     public function getTenNhomSanPham()

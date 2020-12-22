@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/header.css">
 	<link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/support.css">
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
     <link rel="stylesheet" href="css/model-product-view.css">
     <link rel="stylesheet" type="text/css" href="css/style-modal.css">
     <link rel="stylesheet" type="text/css" href="css/style-detail-product.css">
@@ -20,47 +21,60 @@
 </head>
 
 <body>
-    <div id="product-bought">
-        <div id="added">    
-            <form action="startpay.html">
-                <p><b><i class="fas fa-check"></i>&nbsp;&nbsp;Sản Phẩm Vừa Được Thêm Vào Giỏ Hàng</b></p>
-                <hr>
-                <div class="added-one">
-                    <div class="added-one-one">
-                        <a href=""><img src="images/images-product/100.png"></a>
-                    </div>
-                    <div class="added-one-two">
-                        <p>#000000</p>
-                        <p><b style="color: red;">299.000đ</b></p>
-                        <p>40</p>
-                    </div>
-                </div>
-                <hr>
-                <p><i class="fas fa-chevron-right"></i>&nbsp;Giỏ Hàng Hiện Có <span>(20)</span>Sản Phẩm</p>
-                <button id="start-paid">Tiến Hành Thanh Toán &nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
-                <i onclick="CloseGioHang()" id="close-added" class="fas fa-times-circle"></i>
-            </form>
-        </div>
-        <!-- Back To Top -->
-        <i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
-        <!-- Back To Top -->
-        <i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        <i id="loading-slide" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        <!--Modal-->
+
+    <?php 
+        include_once 'model/KhachHang.php';
+        include_once 'model/function.php';
+        session_start(); 
+    ?>
+    <div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
+        <?php include_once 'detail-cart.php'; ?>
+    </div>
+    <i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    <div id="cart-web" style="width: 100%;">
+
+    </div>
     <div id="web">
-    <?php include 'header.php'; include_once 'model/function.php'?>
-    <?php if (isset($_REQUEST['IDSP'])) { ?>
-        <?php $sp = getSanPhamByID($_REQUEST['IDSP']); ?>
-            <div id="frist-content">
-                <div><a href="index.php">Trang Chủ</a>
-                    &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
-                    <a href="product.php">Sản Phẩm</a>
-                    &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
-                    <a style="color: #1E9E74;" href="detail-product.php?IDSP=<?php echo $_REQUEST['IDSP']; ?>"><?php echo $sp->getTenSanPham(); ?></a>
-                </div>
+        <?php 
+            if (isset($_POST['muaHangClick'])) {
+                $soLuong = $_POST['num'];
+                $id = $_POST['id_sanpham'];
+                if (isset($_SESSION['user'])) {
+                    $arr[0] = $soLuong;
+                    $arr[1] = $id;
+                    
+                    $_SESSION['arrData'] = $arr;
+                    include_once 'model/modalProduct.php';
+                    echo dis();
+                }
+                else {
+                    header('Location: login.php');
+                }
+            }
+        ?>
+        <?php include 'header.php'; include_once 'model/function.php'?>
+        <?php if (isset($_REQUEST['Mau'])
+                &&isset($_REQUEST['BoNho'])
+                &&isset($_REQUEST['DSP'])) {
+                $iddsp = $_REQUEST['DSP'];
+                $mau = $_REQUEST['Mau']; 
+                $boNho = $_REQUEST['BoNho'];
+                $sp = getSanPhamC($iddsp,$boNho,$mau);
+        ?>
+        <div id="frist-content">
+            <div><a href="index.php">Trang Chủ</a>
+                &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
+                <a href="product.php">Sản Phẩm</a>
+                &nbsp;&nbsp; <i class="fas fa-angle-right"></i> &nbsp;&nbsp;
+                <a style="color: #1E9E74;" href="detail-product.php?IDSP=<?php echo $_REQUEST['IDSP']; ?>"><?php echo $sp->getTenSanPham(); ?></a>
             </div>
+        </div>
         <div class="wrapper">
-            <div class="container-product">
+            <form action="detail-product.php?Mau=<?php 
+                            echo $sp->getIDMau(); ?>&BoNho=<?php
+                            echo $sp->getBoNho(); ?>&DSP=<?php 
+                            echo $sp->getIDDongSanPham(); ?>" method="POST" id="myForm">
+                <div class="container-product">
                 <div id="full-content-ten">
                     <div class="product-left">
                         <img id="changePicture1" 
@@ -106,20 +120,29 @@
                     <hr>
                     <p><b>Kích Thước</b></p>
                     <div class="color-product">
-                        <?php echo loadBoNho(getBoNho($sp->getIDSanPham())); ?>
+                        <?php echo 
+                loadBoNho1(getBoNho($sp->getIDSanPham()),
+                $sp->getIDMau(),
+                $sp->getIDDongSanPham()); ?>
                     </div>
                     <div class="size-product">
-                        <?php echo loadMau(getMau($sp->getIDSanPham())); ?>
+                        <?php echo 
+                loadMau1(getMau($sp->getIDSanPham()),
+                $sp->getBoNho(),
+                $sp->getIDDongSanPham()); ?>
                     </div>'
                     <p><b>Số Lượng</b></p>
                     <div id="number-product-main">
                         <div class="number-product-left">
-                            <button onclick="giamSoLuong1()" type="button">--</button>
-                            <input id="dulieu1" type="text" value="1">
-                            <button onclick="tangSoLuong1()" type="button">+</button>
+                            <button onclick="giamSoLuong()" type="button">--</button>
+                            <input id="dulieu1" type="text" value="1" name="num">
+                            <input type="hidden" value="<?php echo $sp->getIDSanPham(); ?>" 
+                            name="id_sanpham">
+                            <button onclick="tangSoLuong()" type="button">+</button>
                         </div>
+                        <input type="hidden" name="muaHangClick" value="1">
                         <div class="number-product-right">
-                            <button onclick="addCart()" type="button">Thêm vào giỏ hàng</button>
+                            <span onclick="ookoo()">Thêm vào giỏ hàng</span>
                         </div>
                     </div>
                 </div>
@@ -168,6 +191,7 @@
                     </ul>
                 </div>
             </div>
+            </form>
             <div class="three-infor-product">
                 <ul>
                     <li onclick="OpenCTSanPham()">Chi tiết sản phẩm</li>
@@ -464,8 +488,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="js/javascript -detailprodcut.js"></script>
+    <script src="js/javascript.js"></script>
     <script src="js/process-form.js"></script>
+    <script src="js/colorAndMemoryOption.js"></script>
 </body>
 
 </html>

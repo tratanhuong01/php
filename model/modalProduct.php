@@ -1,6 +1,6 @@
 <?php 
 	
-	function modal($sp,$arrBoNho,$arrMau) {
+	function modal($sp,$arrBoNho,$arrMau,$mau,$boNho) {
 		$s = '<div id="container-product">
 			<div id="turn-off-modal">
 				<button onclick="closeModal()">x</button>
@@ -40,11 +40,11 @@
 				<hr>
 				<p><b>Kích Thước</b></p>'.
 				'<div class="color-product">'.
-					loadBoNho($arrBoNho)
+					loadBoNho($arrBoNho,$mau,$sp->getIDDongSanPham())
 					
 				.'</div>
 				<div class="size-product">'.
-					loadMau($arrMau)
+					loadMau($arrMau,$boNho,$sp->getIDDongSanPham())
 				.'</div>'
 				.'<p><b>Số Lượng</b></p>
 				<form action="index.php" method="POST" id="myForm">
@@ -74,21 +74,42 @@
 		}
 		return $string;
 	}
-	function loadBoNho($arr) {
+	function loadBoNho($arr,$str,$iddsp) {
 		$string = "";
 		foreach ($arr as $key => $value) {
-			$string .= '<button type="button">'. $value .'</button>' . " ";
+			$string .= '<button type="button" 
+	onclick="chon('."'".$str."',"."'".$value."',"."'".$iddsp."'".')"'.
+			'>'. $value .'</button>' . " ";
 		}
 		return $string;
 	}
-	function loadMau($arr) {
+	function loadMau($arr,$str,$iddsp) {
 		$string = "";
 		foreach ($arr as $key => $value) {
-			$string .= '<button type="button" style="background-color:'.$value[1].';"></button>' . " ";
+			$string .= '<button type="button" 
+	onclick="chon('."'".$value[0]."',"."'".$str."',"."'".$iddsp."'".')"'.
+			 'style="background-color:'.$value[1].';"></button>' . " ";
 		}
 		return $string;
 	}
-
+	function loadBoNho1($arr,$str,$iddsp) {
+		$string = "";
+		foreach ($arr as $key => $value) {
+			$string .= '<button type="button" 
+	onclick="chon1('."'".$str."',"."'".$value."',"."'".$iddsp."'".')"'.
+			'>'. $value .'</button>' . " ";
+		}
+		return $string;
+	}
+	function loadMau1($arr,$str,$iddsp) {
+		$string = "";
+		foreach ($arr as $key => $value) {
+			$string .= '<button type="button" 
+	onclick="chon1('."'".$value[0]."',"."'".$str."',"."'".$iddsp."'".')"'.
+			 'style="background-color:'.$value[1].';"></button>' . " ";
+		}
+		return $string;
+	}
 	function productAdded($sp,$num) {
 		$s = "";
 		$s .= '<div id="product-bought">

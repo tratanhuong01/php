@@ -1,5 +1,4 @@
 
-
 <div id="header">
 	<div id="header-web">
 		<div class="menu-hide-home">
@@ -110,7 +109,7 @@
 					<a href="processLogout.php"><i class="fas fa-sign-out-alt" style="color: #1E9E74;position: relative;left: 195px;top: 15px;font-size: 35px;"></i></a>
 				</div>
 				<div id="cart">
-					<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span
+					<a><i onclick="openCartC()" class="fa fa-shopping-cart" aria-hidden="true"></i><span
 							id="number-cart"><?php 
 									include_once 'model/function.php';
 									echo getNumGioHangByID($_SESSION['user']->getIDKhachHang());

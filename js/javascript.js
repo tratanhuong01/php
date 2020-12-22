@@ -1,22 +1,4 @@
-/* SlideShow Background Images */
-var Arr = [
-    "url('././images/anhnen1.png')",
-    "url('././images/anhnen2.jpg')"
-    ] 
-var frist = 0
-function slideShowBackground()
-		{
-            var slideShowBg = document.getElementById("header")
-            slideShowBg.style.backgroundImage = Arr[frist]
-            frist++   
-            if (frist > Arr.length)
-            {
-                frist = 0
-            }
-            setTimeout("slideShowBackground()",3000)
-        }
-       
-/* JavaScript cho menu */
+
 function openMenu() {
     var menuOpen = document.getElementById("menu")
     menuOpen.style.display = 'block'
@@ -25,11 +7,6 @@ function closeMenu() {
     var menuOpen = document.getElementById("menu")
     menuOpen.style.display = 'none'
 }
-/*JavaScript MoDal */
-function deleteChild() { 
-        
-    } 
-
 function openModal(str)
 {
     var demo = document.getElementById('modalsp');
@@ -205,7 +182,6 @@ function conectPageBuy() {
 }
 function addCart(str)
 {
-    
     setTimeout(function(){
         opacityweb.style.opacity = '0.2'
         oModal.style.display = 'none'
@@ -219,7 +195,7 @@ function CloseGioHang()
     var productAdded = document.getElementById("added")
     productAdded.style.display = 'none'
     opacityweb.style.opacity = '1'
-    window.location = 'index.php';
+    window.location.href = window.location.href
 }
 function previousProduct() {
     var main = document.getElementsByClassName('product-center-one')[0];
@@ -265,4 +241,16 @@ function ookoo() {
     setTimeout(function() {
         document.getElementById("myForm").submit();
     }, 2000);
+}
+function openCartC() {
+    var fullmaincart = document.getElementById('fullmaincart');
+    var web = document.getElementById('web');
+    web.style.opacity = '0.2';
+    fullmaincart.style.display = 'block';
+}
+function closeCartC() {
+    var fullmaincart = document.getElementById('fullmaincart');
+    var web = document.getElementById('web');
+    web.style.opacity = '1';
+    fullmaincart.style.display = 'none';
 }

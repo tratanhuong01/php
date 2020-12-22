@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css\responsive-trangchu.css">
 	<link rel="stylesheet" type="text/css" href="css\animate.css">
 	<link rel="stylesheet" type="text/css" href="css\style-modal.css">
+	<link rel="stylesheet" type="text/css" href="css\cart.css">
 	<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0\css\font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fontawesome-free-5.11.2-web\css\all.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist\css\bootstrap.min.css">
@@ -21,6 +22,7 @@
 		#modelsp {
 			display: block !important;
 		}
+
 	</style>
 </head>
 
@@ -31,6 +33,9 @@
 	session_start(); ?>
 	<i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
 	<i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+	<div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
+		<?php include_once 'detail-cart.php'; ?>
+	</div>
 	<div id="demo" style="width: 100%;">
 		<div id="modalsp" style="display: none;">
 		</div>
@@ -121,7 +126,11 @@
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
-								<a href="detail-product.php?IDSP=<?php echo $value->getIDSanPham(); ?>"><b><?php echo $value->getTenSanPham(); ?></b></a><br>
+							<a href="detail-product.php?Mau=<?php 
+							echo $value->getIDMau(); ?>&BoNho=<?php
+							echo $value->getBoNho(); ?>&DSP=<?php 
+							echo $value->getIDDongSanPham(); ?>"><b>
+								<?php echo $value->getTenSanPham(); ?></b></a><br>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -228,6 +237,7 @@
 		<script type="text/javascript" src="js/javascript.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script type="text/javascript" src="js/process-form.js"></script>
+		<script src="js/colorAndMemoryOption.js"></script>
 </body>
 
 </html>
