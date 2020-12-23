@@ -19,10 +19,22 @@
 </head>
 
 <body>
-    <!--Hộp Thoại Tư Vấn-->
-    <!-- Back To Top -->
+    <?php include_once 'model/Function.php';
+    include_once 'model/KhachHang.php';
+    session_start(); ?>
     <i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
     <!-- Back To Top -->
+    <div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
+        
+    </div>
+    <div id="demo" style="width: 100%;">
+        <div id="modalsp" style="display: none;">
+        </div>
+    </div>
+    <div id="cart-web" style="width: 100%;">
+
+    </div>
+    
     <div id="web">
         <?php include 'header.php'; ?>
         
@@ -47,7 +59,16 @@
                             <th colspan="4"><hr style="width: 100%;border: 2px solid cadetblue;
                             background-color: cadetblue;"></th>
                         </tr>
+                        <?php 
+                                include_once 'model/function.php';
+                                include_once 'model/GioHang.php';
+                                include_once 'model/KhachHang.php';
+                                if (isset($_SESSION['user'])) {
+                                    $arr = getSanPhamByGioHang($_SESSION['user']->getIDKhachHang());
+                                    foreach ($arr as $key => $value) {
+                            ?>
                         <tr>
+                            
                             <td>
                                 <div style="width: 100%;display: flex;">
                                     <div class="close-cart">
@@ -55,28 +76,36 @@
                                     </div>
                                     <div style="width: 93%;display: flex;">
                                         <div style="width: 20%;">
-                                            <a href=""><img style="width: 100%;padding: 0px 8px;" src="images/images-product/100.png" alt=""></a>
+                                            <a href=""><img style="width: 100%;padding: 0px 8px;" src="images/images-product/<?php 
+                                            echo  $value->getAnhSanPham().$value->getIDMau().'.png'; ?>" alt=""></a>
                                         </div>
                                         <div style="width: 80%;">
-                                            <p><a href="">Giày Thể Thao Nam Biti's Hunter Core - 
-                                                Midnight Black Inverted DSMH01203DEN (Đen)</a></p>
-                                            <p>MÀU SẮC : ĐEN ; SIZE : 40</p>
+                                            <p><a href="">
+                                                <?php echo $value->getTenSanPham(); ?>
+                                            </a></p>
+                                            <p>MÀU SẮC : <?php echo $value->getMau(); ?> ; Bộ Nhớ : <?php echo $value->getBoNho(); ?>GB</p>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p style="color: red;font-weight: bold;margin: 0;">499.000 đ</p>
+                                <p style="color: red;font-weight: bold;margin: 0;">
+                                    <?php echo number_format($value->getDonGia()); ?>đ</p>
                             </td>
                             <td>
                                 <form action="" method="post" class="number-cart">
-                                    <a href="">-</a><input type="text" style="width: 30px;"><a href="">+</a>
+                                    <a href="">-</a><input type="text" style="width: 30px;"
+                                    value="<?php echo $value->getSoLuong(); ?>"><a href="">+</a>
                                 </form>
                             </td>
                             <td>
-                                <p style="color: red;font-weight: bold;margin: 0;">499.000 đ</p>
+                                <p style="color: red;font-weight: bold;margin: 0;">
+                                <?php echo number_format($value->getSoLuong()*$value->getDonGia()); ?> đ</p>
                             </td>
                         </tr>
+                            <?php 
+                                } 
+                            }?>
                     </table>
                     <a href="" id="tieptuc"> -- TIẾP TỤC XEM SẢN PHẨM</a>
                     <a href="" id="capnhat"> -- CẬP NHẬT GIỎ HÀNG</a>
@@ -93,7 +122,10 @@
                         <tr>
                             <td colspan="2" style="text-align: left;">Tạm Tính</td>
                             <td colspan="2" style="text-align: right;">
-                                <p style="color: red;font-weight: bold;margin: 0;">499.000 đ</p></td>
+                                <p style="color: red;font-weight: bold;margin: 0;">
+                                <?php include_once 'model/function.php'; 
+                                echo number_format(tinhTongTienGioHang($_SESSION['user']->getIDKhachHang()));
+                                ?> đ</p></td>
                         </tr>
                         <tr>
                             <th colspan="4"><hr style="width: 100%;border: 2px solid cadetblue;
@@ -102,7 +134,8 @@
                         <tr>
                             <td colspan="2" style="text-align: left;">Thành Tiền</td>
                             <td colspan="2" style="text-align: right;">
-                                <p style="color: red;font-weight: bold;margin: 0;">499.000 đ</p></td>
+                                <p style="color: red;font-weight: bold;margin: 0;"><?php 
+                                echo number_format(tinhTongTienGioHang($_SESSION['user']->getIDKhachHang())); ?> đ</p></td>
                         </tr>
                         <tr>
                             <th colspan="4"><hr style="width: 100%;border: 2px solid cadetblue;
@@ -137,8 +170,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="js/javascript-sanpham.js"></script>
+    <script src="js/javascript.js"></script>
     <script src="js/process-form.js"></script>
+    <script src="js/colorAndMemoryOption.js"></script>
 </body>
 
 </html>

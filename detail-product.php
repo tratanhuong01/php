@@ -28,7 +28,7 @@
         session_start(); 
     ?>
     <div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
-        <?php include_once 'detail-cart.php'; ?>
+    
     </div>
     <i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     <div id="cart-web" style="width: 100%;">
@@ -53,6 +53,7 @@
             }
         ?>
         <?php include 'header.php'; include_once 'model/function.php'?>
+
         <?php if (isset($_REQUEST['Mau'])
                 &&isset($_REQUEST['BoNho'])
                 &&isset($_REQUEST['DSP'])) {
@@ -135,7 +136,7 @@
                     <div id="number-product-main">
                         <div class="number-product-left">
                             <button onclick="giamSoLuong()" type="button">--</button>
-                            <input id="dulieu1" type="text" value="1" name="num">
+                            <input id="dulieu" type="text" value="1" name="num">
                             <input type="hidden" value="<?php echo $sp->getIDSanPham(); ?>" 
                             name="id_sanpham">
                             <button onclick="tangSoLuong()" type="button">+</button>

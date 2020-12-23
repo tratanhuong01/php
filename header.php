@@ -17,55 +17,25 @@
 						Sản Phẩm
 					</a>
 					<ul class="sub-menu">
+						<?php 
+							include_once 'model/function.php';
+							$arr = loadSubMenu();
+							for ($i=0; $i < sizeof($arr); $i++) { 
+						?>		
+
 						<li>
-							<a href="">
-							<div class="icon_i"><i class="fas fa-mobile-alt"></i></div>
+							<a href="product.php?type=<?php echo $arr[$i]['type']; ?>">
+							<div class="icon_i"><?php echo $arr[$i]['Icon']; ?></div>
 							<div class="name_i">
-								Điện Thoại
+								<?php echo $arr[$i]['TenNhom'] ?>
 							</div></a>
 							<ul class="sub-menu1">
 
 							</ul>
 						</li>
-						<li>
-							<a href=""><div class="icon_i"> <i class="fas fa-laptop">
-							</i></div><div class="name_i">Laptop</div></a>
-							<ul class="sub-menu1">
-
-							</ul>
-						</li>
-						<li>	
-							<a href=""><div class="icon_i">
-							<i class="fas fa-tablet-alt"></i></div><div class="name_i">Table</div></a>
-							<ul class="sub-menu1">
-
-							</ul>
-						</li>
-						<li>
-							<a href="">
-								<div class="icon_i"><i class="fas fa-headphones">
-								</i></div><div class="name_i">Phụ Kiện</div>
-							</a>
-							<ul class="sub-menu1">
-
-							</ul>
-						</li>
-						<li>
-							<a href="">
-								<div class="icon_i"><img src="https://img.icons8.com/wired/30/000000/apple-watch-apps.png"/></div>
-								<div class="name_i">Đồng Hồ Thời Trang </div></a>
-							<ul class="sub-menu1">
-
-							</ul>
-						</li>
-						<li>
-							<a href="">
-								<div class="icon_i"><img src="https://img.icons8.com/wired/30/000000/apple-watch-apps.png"/></div>
-								<div class="name_i">Đồng Hồ Thông Minh</div></a>
-							<ul class="sub-menu1">
-
-							</ul>
-						</li>
+						<?php
+							}
+						?>
 					</ul>
 				</li>
 				<li>	

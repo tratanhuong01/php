@@ -8,9 +8,6 @@
 		$iddsp = $_GET['IDDongSanPham'];
 		$sp = getSanPhamC($iddsp,$boNho,$mau);
 		echo modal($sp,getBoNho($sp->getIDSanPham()),getMau($sp->getIDSanPham()),$mau,$boNho);
-		echo "<pre>";
-		print_r($sp);
-		echo "</pre>";
 	}
 	else {
 		echo "error";

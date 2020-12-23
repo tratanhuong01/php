@@ -1,5 +1,6 @@
+<?php include_once 'model/KhachHang.php';session_start(); ?>
 <div id="cart-de">
-	<div id="fullmaincart">
+	<div id="fullmaincart" style="display: block;">
 		<div style="width: 100%;height: 50px;position: fixed;line-height: 50px;
 		display: flex;">
 			<h2 style="text-align: center;width: 400px;margin-top: 7px;font-weight: bold;">GIỎ HÀNG</h2>
@@ -8,7 +9,6 @@
 		</div>
 		<div id="fullcartO">
 			<?php 
-
 				include_once 'model/function.php';
 				include_once 'model/GioHang.php';
 				include_once 'model/KhachHang.php';
@@ -36,7 +36,7 @@
 						</div>
 					</div>
 					<div class="close-cart1">
-                       <a href="">&times;</a>
+                       <b>&times;</b>
                     </div>
 				</div>
 				<hr style="margin: 4px;">
@@ -44,12 +44,13 @@
 				} 
 			}?>
 			<p style="padding: 10px;font-weight: bold;text-align: center;">
-				<a href="">Vào Giỏ Hàng</a>
+				<a href="cart.php">Vào Giỏ Hàng</a>
 			</p>
 		</div>
 		<div class="cart-bottom">
 			<hr>
-			<p style="text-align: center;font-size: 20px;padding: 11px;">Tạm Tính : </p>
+			<p style="text-align: center;font-size: 20px;padding: 11px;font-weight: bold;">Tạm Tính : <?php 
+			include_once 'model/function.php'; echo number_format(tinhTongTienGioHang($_SESSION['user']->getIDKhachHang())); ?>đ</p>
 			<hr>
 			<form>
 				<button>Xem Giỏ Hàng</button>

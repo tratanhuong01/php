@@ -245,10 +245,34 @@ function ookoo() {
 function openCartC() {
     var fullmaincart = document.getElementById('fullmaincart');
     var web = document.getElementById('web');
+    var demo = document.getElementById('ani');
+    var child = demo.lastElementChild;  
+    while (child) { 
+        demo.removeChild(child); 
+        child = demo.lastElementChild; 
+    } 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            demo.innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "detail-cart.php");
+    xhttp.send();
     web.style.opacity = '0.2';
     fullmaincart.style.display = 'block';
 }
 function closeCartC() {
+
+    var demo = document.getElementById('ani');
+    var elm = demo;
+    var newone = elm.cloneNode(true);
+    elm.parentNode.replaceChild(newone, elm);
+    var child = demo.lastElementChild;  
+    while (child) { 
+        demo.removeChild(child); 
+        child = demo.lastElementChild; 
+    } 
     var fullmaincart = document.getElementById('fullmaincart');
     var web = document.getElementById('web');
     web.style.opacity = '1';

@@ -47,7 +47,7 @@
 					loadMau($arrMau,$boNho,$sp->getIDDongSanPham())
 				.'</div>'
 				.'<p><b>Số Lượng</b></p>
-				<form action="index.php" method="POST" id="myForm">
+				<form action="" method="POST" id="myForm">
 				<div id="number-product-main">
 					<div class="number-product-left11">
 						<button onclick="giamSoLuong()" id="tang" type="button">--</button>

@@ -42,14 +42,28 @@
 	text-align: center;
 	margin-top: 30px;
 	position: absolute;
-	top: -25px;
-	right: 15px;
+	top: -30px;
+	right: 30px;
 }
 .close-cart1 a {
 	border: 2px solid brown;
 	color: black;
 	padding: 1px 7px;
 	border-radius: 50%;
+}
+.close-cart1 b {
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 1px solid red;
+    padding: 0px 7px;
+    cursor: pointer;
+}
+.close-cart1 b:hover {
+	border: 1px solid #ccc;
+	background-color: red;
+	font-weight: bold;
+	color: white;
 }
 .close-cart {
 	width: 7%;
@@ -226,12 +240,12 @@ span#closeCartC:hover {
 .infosss span {
     line-height: 25px;
 }
-@keyframes ani {
+@keyframes anis {
   from {right:-400px;}
   to {right:0}
 }
 #ani {
-	animation-name: ani;
+	animation-name: anis;
 	animation-duration: 3s;
 }
 #fullcartO::-webkit-scrollbar-track

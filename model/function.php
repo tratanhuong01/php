@@ -95,26 +95,7 @@
 		}
 		return true;
 	}
-	function getArrSanPham() {
-		$arr = array();
-		try {
-			$conn = getConnection();
-			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau";
-			$stm = $conn->prepare($query);
-			$stm->execute();
-			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
-				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
-					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
-					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
-					$row['BoNho'],$row['rgbcolor']);
-				$arr[$row['IDSanPham']] = $sp;
-			}
-			return $arr;
-		} catch (Exception $e) {
-			echo $e->getMessage();
-		}
-		return $arr;
-	}
+	
 	function getSanPhamByID($idSanPham) {
 		$sp = null;
 		try {
@@ -265,5 +246,109 @@
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
+	}
+	function loadSubMenu() {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT * FROM nhomsanpham";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			$arr = $stm->fetchAll(PDO::FETCH_ASSOC);
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
+	}
+	function switchType($type) {
+		$arr = loadSubMenu();
+		$str = "";
+		for ($i=0; $i < sizeof($arr); $i++) { 
+			if ($arr[$i]['type'] == $type) {
+				$str = $arr[$i]['IDNhomSanPham'];
+				break;
+			}
+		}
+		return $str;
+	}
+	function getArrSanPham() {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau ";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
+					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
+					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
+					$row['BoNho'],$row['rgbcolor']);
+				$arr[$row['IDSanPham']] = $sp;
+			}
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
+	}
+	function getArrSanPhamByID($idNhomSanPham) {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau 
+				WHERE nhomsanpham.IDNhomSanPham = ? LIMIT 10";
+			$stm = $conn->prepare($query);
+			$stm->execute([$idNhomSanPham]);
+			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
+					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
+					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
+					$row['BoNho'],$row['rgbcolor']);
+				$arr[$row['IDSanPham']] = $sp;
+			}
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
+	}
+	function checkGioHangTrung($idSanPham,$idKhachHang) {
+		$b = "";
+		try {
+			$conn = getConnection();
+			$query = "SELECT giohang.IDSanPham FROM giohang WHERE
+			 giohang.IDKhachHang = ? AND giohang.IDSanPham = ? ";
+			$stm = $conn->prepare($query);
+			$stm->execute([$idKhachHang,$idSanPham]);
+			$rs = $stm->fetchColumn();
+			if ($rs == null) 
+				$b = "";
+			else {
+				$b = $rs;
+			}
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $b;
+	}
+	function capNhatSoLuongByID($idKhachHang,$idSanPham,$soLuong) {
+		try {
+			$conn = getConnection();
+			$query = "UPDATE giohang SET giohang.SoLuong = giohang.SoLuong + ? WHERE
+			 giohang.IDKhachHang = ? AND giohang.IDSanPham = ? ";
+			$stm = $conn->prepare($query);
+			$stm->execute([$soLuong,$idKhachHang,$idSanPham]);
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+	}
+	function tinhTongTienGioHang($idKhachHang) {
+		$tongTien = 0;
+		$arr = getSanPhamByGioHang($idKhachHang);
+		foreach ($arr as $key => $value) {
+			$tongTien += $value->getDonGia()*$value->getSoLuong();
+		}
+		return $tongTien;
 	}
 ?>

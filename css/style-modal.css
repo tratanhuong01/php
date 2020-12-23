@@ -198,3 +198,11 @@
 	transform: translate(-50%,-50%);
 	font-size: 60px;
 }
+.number-product-right11 span {
+	cursor: pointer;
+    padding: 13px 20px;
+    background-color: #1E9E74;
+    font-weight: bold;
+    color: beige;
+    border-radius: 8px;
+}
