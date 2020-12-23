@@ -117,7 +117,7 @@
 					$arr = getArrSanPhamByID(switchType('dien-thoai')); 
 					foreach ($arr as $key => $value) { 
 				?>
-						<div class="name-product wow bounceInUp slow">
+						<div class="name-product">
 							<a href="detail-product.html"><img src="images/images-product/<?php 
 									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
 									data-zoom-image="" id="zoom"><br></a>
@@ -126,11 +126,12 @@
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
+							<div style="width: 100%;height: 50px;">
 							<a href="detail-product.php?Mau=<?php 
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo $value->getTenSanPham(); ?></b></a><br>
+								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -156,7 +157,7 @@
 					$arr = getArrSanPhamByID(switchType('lap-top')); 
 					foreach ($arr as $key => $value) { 
 				?>
-						<div class="name-product wow bounceInUp slow">
+						<div class="name-product">
 							<a href="detail-product.html"><img src="images/images-product/<?php 
 									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
 									data-zoom-image="" id="zoom"><br></a>
@@ -165,11 +166,13 @@
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
-							<a href="detail-product.php?Mau=<?php 
+							<div style="width: 100%;height: 50px;">
+								<a href="detail-product.php?Mau=<?php 
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo $value->getTenSanPham(); ?></b></a><br>
+								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a>
+							</div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -195,7 +198,7 @@
 					$arr = getArrSanPhamByID(switchType('tablet')); 
 					foreach ($arr as $key => $value) { 
 				?>
-						<div class="name-product wow bounceInUp slow">
+						<div class="name-product">
 							<a href="detail-product.html"><img src="images/images-product/<?php 
 									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
 									data-zoom-image="" id="zoom"><br></a>
@@ -204,11 +207,12 @@
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
+								<div style="width: 100%;height: 50px;">
 							<a href="detail-product.php?Mau=<?php 
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo $value->getTenSanPham(); ?></b></a><br>
+								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -234,7 +238,7 @@
 					$arr = getArrSanPhamByID(switchType('phu-kien')); 
 					foreach ($arr as $key => $value) { 
 				?>
-						<div class="name-product wow bounceInUp slow">
+						<div class="name-product">
 							<a href="detail-product.html"><img src="images/images-product/<?php 
 									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
 									data-zoom-image="" id="zoom"><br></a>
@@ -243,11 +247,12 @@
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
+								<div style="width: 100%;height: 50px;">
 							<a href="detail-product.php?Mau=<?php 
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo $value->getTenSanPham(); ?></b></a><br>
+								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -273,7 +278,7 @@
 					$arr = getArrSanPhamByID(switchType('dong-ho-thong-minh')); 
 					foreach ($arr as $key => $value) { 
 				?>
-						<div class="name-product wow bounceInUp slow">
+						<div class="name-product">
 							<a href="detail-product.html"><img src="images/images-product/<?php 
 									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
 									data-zoom-image="" id="zoom"><br></a>
@@ -282,11 +287,12 @@
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
+								<div style="width: 100%;height: 50px;">
 							<a href="detail-product.php?Mau=<?php 
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo $value->getTenSanPham(); ?></b></a><br>
+								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -312,7 +318,7 @@
 					$arr = getArrSanPhamByID(switchType('dong-ho-thoi-trang')); 
 					foreach ($arr as $key => $value) { 
 				?>
-						<div class="name-product wow bounceInUp slow">
+						<div class="name-product">
 							<a href="detail-product.html"><img src="images/images-product/<?php 
 									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
 									data-zoom-image="" id="zoom"><br></a>
@@ -321,11 +327,12 @@
 										aria-hidden="true"></i></button>
 							</div>
 							<div style="width: 100%;">
+								<div style="width: 100%;height: 50px;">
 							<a href="detail-product.php?Mau=<?php 
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo $value->getTenSanPham(); ?></b></a><br>
+								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;

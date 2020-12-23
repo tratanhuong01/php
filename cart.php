@@ -72,7 +72,7 @@
                             <td>
                                 <div style="width: 100%;display: flex;">
                                     <div class="close-cart">
-                                       <a href="">&times;</a>
+                                       <b onclick="xoaSPGioHang('<?php echo $value->getIDSanPham(); ?>')">&times;</b>
                                     </div>
                                     <div style="width: 93%;display: flex;">
                                         <div style="width: 20%;">
@@ -94,8 +94,8 @@
                             </td>
                             <td>
                                 <form action="" method="post" class="number-cart">
-                                    <a href="">-</a><input type="text" style="width: 30px;"
-                                    value="<?php echo $value->getSoLuong(); ?>"><a href="">+</a>
+                                    <span onclick="giamSoLuong()">-</span><input type="text" style="width: 30px;" id="dulieu" name="dulieu"
+                                    value="<?php echo $value->getSoLuong(); ?>" ><span  onclick="tangSoLuong()">+</span>
                                 </form>
                             </td>
                             <td>
@@ -107,7 +107,7 @@
                                 } 
                             }?>
                     </table>
-                    <a href="" id="tieptuc"> -- TIẾP TỤC XEM SẢN PHẨM</a>
+                    <a href="product.php" id="tieptuc"> -- TIẾP TỤC XEM SẢN PHẨM</a>
                     <a href="" id="capnhat"> -- CẬP NHẬT GIỎ HÀNG</a>
                 </div>
                 <div class="cart-right">

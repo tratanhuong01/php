@@ -297,7 +297,7 @@
 		try {
 			$conn = getConnection();
 			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau 
-				WHERE nhomsanpham.IDNhomSanPham = ? LIMIT 10";
+				WHERE nhomsanpham.IDNhomSanPham = ? AND sanpham.Loai = 3 LIMIT 15 ";
 			$stm = $conn->prepare($query);
 			$stm->execute([$idNhomSanPham]);
 			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
@@ -350,5 +350,79 @@
 			$tongTien += $value->getDonGia()*$value->getSoLuong();
 		}
 		return $tongTien;
+	}
+	function xoaSPGioHangByID($idSanPham,$idKhachHang) {
+		try {
+			$conn = getConnection();
+			$query = "DELETE FROM giohang WHERE IDSanPham = ? AND IDKhachHang = ? ";
+			$stm = $conn->prepare($query);
+			$stm->execute([$idSanPham,$idKhachHang]);
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+	}
+	function getThuongHieu() {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT DISTINCT ThuongHieu FROM sanpham";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			$arr = $stm->fetchAll(PDO::FETCH_ASSOC);
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
+	}
+	function getFullBoNho() {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT DISTINCT BoNho FROM sanpham ORDER BY BoNho DESC";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			$arr = $stm->fetchAll(PDO::FETCH_ASSOC);
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
+	}
+	function getFullMau() {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT DISTINCT sanpham.IDMau , mausanpham.TenMau FROM sanpham 
+			INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			$arr = $stm->fetchAll(PDO::FETCH_ASSOC);
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
+	}
+	function getSPLoc($idNhomSanPham,$whereType,$value) {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau 
+				WHERE nhomsanpham.IDNhomSanPham = ? AND sanpham.".$whereType." = ? LIMIT 15";
+			$stm = $conn->prepare($query);
+			$stm->execute([$idNhomSanPham,$value]);
+			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
+					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
+					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
+					$row['BoNho'],$row['rgbcolor']);
+				$arr[$row['IDSanPham']] = $sp;
+			}
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
 	}
 ?>

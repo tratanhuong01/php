@@ -131,6 +131,8 @@
 .types-product-left ul li {
 	list-style-type: none;
 	padding: 10px 8px;
+	font-weight: bold;
+	font-size: 17px;
 }
 .types-product-left ul li:hover {
 	color: #1E9E74;

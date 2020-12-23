@@ -52,6 +52,7 @@
 		?>
 		<?php 
 			include 'header.php'; 
+			$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : "";
 		?>
 		
 		<div class="wrapper">
@@ -69,17 +70,40 @@
 					</div>
 					<div class="types-product-left">
 							<ul>
-								<li><input type="checkbox" name="checkbox"> Apple</li>
-								<li><input type="checkbox" name="checkbox"> Xiaomi</li>
-								<li><input type="checkbox" name="checkbox"></li>
+								<?php 
+									include_once 'model/function.php';
+									$arr0 = getThuongHieu();
+									for ($i=0; $i < sizeof($arr0); $i++) { 
+								?>
+								<li><input type="radio" 
+						onchange="onChangeJS('<?php echo $type; ?>','ThuongHieu','<?php echo $arr0[$i]['ThuongHieu'] ?>')"
+									value="<?php echo $arr0[$i]['ThuongHieu'] ?>" 
+									name="thuongHieu"> <?php echo $arr0[$i]['ThuongHieu'] ?></li>		
+								<?php
+									}
+								?>
+								
 							</ul>
 					</div>
 					<div class="head-name-product">
-						<b>LOẠI</b>
+						<b>Bộ Nhớ</b>
+						
 					</div>
 					<div class="types-product-left">
 						<ul>
-							<li><input type="checkbox" name="checkbox"></li>
+							<?php 
+								include_once 'model/function.php';
+								$arr1 = getFullBoNho();
+								for ($i=0; $i < sizeof($arr1); $i++) { 
+							?>
+							<li><input type="radio" 
+						onchange="onChangeJS('<?php echo $type; ?>','BoNho','<?php echo $arr1[$i]['BoNho'] ?>')"
+								value="<?php echo $arr1[$i]['BoNho'] ?>" 
+								name="boNho"> <?php echo $arr1[$i]['BoNho'] ?> GB</li>		
+							<?php
+								}
+							?>
+							
 						</ul>
 					</div>
 					<div class="head-name-product">
@@ -87,12 +111,19 @@
 					</div>
 					<div class="types-product-left">
 						<ul>
-							<li><input type="checkbox" name="checkbox"> Vàng</li>
-							<li><input type="checkbox" name="checkbox"> Tím</li>
-							<li><input type="checkbox" name="checkbox"> Đỏ</li>
-							<li><input type="checkbox" name="checkbox"> Xanh</li>
-							<li><input type="checkbox" name="checkbox"> Hồng</li>
-							<li><input type="checkbox" name="checkbox"> Cam</li>					
+							<?php 
+								include_once 'model/function.php';
+								$arr2 = getFullMau();
+								for ($i=0; $i < sizeof($arr2); $i++) { 
+							?>
+							<li><input 
+				onchange="onChangeJS('<?php echo $type; ?>','IDMau','<?php echo $arr2[$i]['IDMau'] ?>')" type="radio" 
+								value="<?php echo $arr2[$i]['TenMau'] ?>" 
+								name="boNho"> <?php echo $arr2[$i]['TenMau'] ?></li>		
+							<?php
+								}
+							?>
+							
 						</ul>
 					</div>
 					<div class="head-name-product">
@@ -100,12 +131,14 @@
 					</div>
 					<div class="types-product-left">
 						<ul>
-							<li><input type="checkbox" name="checkbox"> Dưới 100.000đ</li>
-							<li><input type="checkbox" name="checkbox"> 100.000đ-200.000đ</li>
-							<li><input type="checkbox" name="checkbox"> 200.000đ-300.000đ</li>
-							<li><input type="checkbox" name="checkbox"> 300.000đ-500.000đ</li>
-							<li><input type="checkbox" name="checkbox"> 500.000đ-1.000.000đ</li>
-							<li><input type="checkbox" name="checkbox"> Trên 1.000.000đ</li>							
+							<li><input type="radio" name="gia"> Dưới 100.000đ</li>
+							<li><input type="radio" name="gia"> 100.000đ - 200.000đ</li>
+							<li><input type="radio" name="gia"> 200.000đ - 300.000đ</li>
+							<li><input type="radio" name="gia"> 300.000đ - 500.000đ</li>
+							<li><input type="radio" name="gia"> 500.000đ - 1.000.000đ</li>
+							<li><input type="radio" name="gia"> Trên 1.000.000đ</li>
+							<li><input type="radio" name="gia"> Trên 3.000.000đ</li>		
+							<li><input type="radio" name="gia"> Trên 5.000.000đ</li>
 						</ul>
 					</div>
 				</div>
@@ -120,39 +153,7 @@
 						</ul>
 					</div>
 					<div class="product">
-						<?php 
-							if (isset($_REQUEST['type'])) 
-							$arr = getArrSanPhamByID(switchType($_REQUEST['type'])); 
-							else 
-							$arr = getArrSanPham();
-							foreach ($arr as $key => $value) { 
-						?>
-						<div class="name-product">
-							<a href="detail-product.html"><img src="images/images-product/<?php 
-									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
-									data-zoom-image="" id="zoom"><br></a>
-							<div class="view-modal-product">
-								<button onclick="openModal('<?php echo $value->getIDSanPham(); ?>')" type="button"><i class="fa fa-search"
-										aria-hidden="true"></i></button>
-							</div>
-							<div style="width: 100%;">
-							<a href="detail-product.php?Mau=<?php 
-							echo $value->getIDMau(); ?>&BoNho=<?php
-							echo $value->getBoNho(); ?>&DSP=<?php 
-							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo $value->getTenSanPham(); ?></b></a><br>
-								<div class="cost" style="font-size: 12px;">
-									<b>Giá : <?php echo number_format($value->getDonGia()
-										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
-										 <strike><?php echo number_format($value->getDonGia()); ?>đ</strike>
-								</div>
-								<div class="buy-now">
-									<button onclick="window.location.href = 
-									'detail-product.php?IDSP=<?php echo $value->getIDSanPham(); ?>'">Mua Ngay</button>
-								</div>
-							</div>
-						</div>
-						<?php } ?>
+						<?php include_once 'processLoc.php'; ?>
 					</div>
 			</div>
 		</div>

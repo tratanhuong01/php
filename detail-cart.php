@@ -1,4 +1,11 @@
-<?php include_once 'model/KhachHang.php';session_start(); ?>
+<?php 
+	include_once 'model/KhachHang.php';
+	session_start(); 
+	if (isset($_REQUEST['ID'])) {
+		include_once 'model/function.php';
+		xoaSPGioHangByID($_REQUEST['ID'],$_SESSION['user']->getIDKhachHang());
+	}
+?>
 <div id="cart-de">
 	<div id="fullmaincart" style="display: block;">
 		<div style="width: 100%;height: 50px;position: fixed;line-height: 50px;
@@ -14,9 +21,12 @@
 				include_once 'model/KhachHang.php';
 				if (isset($_SESSION['user'])) {
 					$arr = getSanPhamByGioHang($_SESSION['user']->getIDKhachHang());
+					$i = 0;
 					foreach ($arr as $key => $value) {
+
 			?>
 				<div class="cart-top">
+					<i class="fas fa-circle-notch fa-spin loadingGio"></i>
 					<div class="cart-top-left">
 					<?php $img = $value->getAnhSanPham().$value->getIDMau().'.png'; ?>
 						<a href=""><img src="images/images-product/<?php echo $img; ?>"></a>
@@ -36,7 +46,7 @@
 						</div>
 					</div>
 					<div class="close-cart1">
-                       <b>&times;</b>
+                       <b onclick="xoaSanPhamGioHang('<?php echo $value->getIDSanPham(); ?>','<?php echo $i; $i++;?>')">&times;</b>
                     </div>
 				</div>
 				<hr style="margin: 4px;">

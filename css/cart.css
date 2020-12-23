@@ -7,7 +7,17 @@
 	text-decoration: none;
 
 }
-
+a:hover {
+	text-decoration: none;
+}
+form.number-cart span {
+    padding: 5px 8px;
+    font-weight: bold;
+    background-color: #ccc;
+    border: 1px solid;
+    cursor: pointer;
+}
+i.fas.fa-circle-notch.fa-spin {position: absolute;font-size: 40px;top: 37%;left: 47%;display: none;}
 .wrapper {
 	width: 80% !important;
 	margin: auto;
@@ -45,12 +55,6 @@
 	top: -30px;
 	right: 30px;
 }
-.close-cart1 a {
-	border: 2px solid brown;
-	color: black;
-	padding: 1px 7px;
-	border-radius: 50%;
-}
 .close-cart1 b {
     font-size: 25px;
     font-weight: bold;
@@ -73,13 +77,14 @@
 	text-align: center;
 	margin-top: 30px;
 }
-.close-cart a {
+.close-cart b {
 	border: 2px solid brown;
 	color: black;
 	padding: 1px 7px;
 	border-radius: 50%;
+	cursor: pointer;
 }
-.close-cart a:hover {
+.close-cart b:hover {
 	border: 2px solid #ccc;
 	background-color: red;
 	text-decoration: none;

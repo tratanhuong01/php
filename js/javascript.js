@@ -263,7 +263,6 @@ function openCartC() {
     fullmaincart.style.display = 'block';
 }
 function closeCartC() {
-
     var demo = document.getElementById('ani');
     var elm = demo;
     var newone = elm.cloneNode(true);
@@ -277,4 +276,57 @@ function closeCartC() {
     var web = document.getElementById('web');
     web.style.opacity = '1';
     fullmaincart.style.display = 'none';
+}
+function xoaSanPhamGioHang(str,num) {
+    var demo = document.getElementById('ani');
+    var load = document.getElementsByClassName('loadingGio');
+    var cartTop = document.getElementsByClassName('cart-top');
+    var child = demo.lastElementChild; 
+    cartTop[num].style.opacity = '0.3';
+    load[num].style.display = 'block';
+    setTimeout(function(){
+        load[num].style.display = 'none';
+        cartTop[num].style.opacity = '1';
+        var child = demo.lastElementChild; 
+        while (child) { 
+        demo.removeChild(child); 
+        child = demo.lastElementChild; 
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                demo.innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "detail-cart.php?ID=" + str);
+        xhttp.send();
+    },2000)
+}
+function xoaSPGioHang(str) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            demo.innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "xoaSPGioHang.php?ID=" + str);
+    xhttp.send();
+    window.location.href = 'cart.php';
+}
+function onChangeJS(valueType,Column,Data) {
+    var product = document.getElementsByClassName('product')[0];
+    var child = product.lastElementChild; 
+    while (child) { 
+        product.removeChild(child); 
+        child = product.lastElementChild; 
+    }
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            product.innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "processLoc.php?TypeLoc=" + 
+        valueType + "&Column=" + Column+ "&Data=" + Data,true);
+    xhttp.send();
 }
