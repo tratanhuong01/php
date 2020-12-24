@@ -52,7 +52,7 @@
 		?>
 		<?php 
 			include 'header.php'; 
-			$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : "";
+			$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : "NULL";
 		?>
 		
 		<div class="wrapper">
@@ -65,10 +65,11 @@
 			<div class="all-product">
 				<div class="filter-product">
 					<div style="padding: 0px 0px 20px 0px;"><b>Bộ Lọc Sản Phẩm</b></div>
-					<div class="head-name-product">
+					<div  onclick="clickHideLoc(0)" class="head-name-product">
 						<b>THƯƠNG HIỆU</b>
+						<i class="fas fa-sort-down"></i>
 					</div>
-					<div class="types-product-left">
+					<div class="types-product-left" style="display:block;" >
 							<ul>
 								<?php 
 									include_once 'model/function.php';
@@ -85,11 +86,11 @@
 								
 							</ul>
 					</div>
-					<div class="head-name-product">
-						<b>Bộ Nhớ</b>
-						
+					<div onclick="clickHideLoc(1)" class="head-name-product">
+						<b>BỘ NHỚ</b>
+						<i class="fas fa-sort-down"></i>
 					</div>
-					<div class="types-product-left">
+					<div class="types-product-left" style="display:block;" >
 						<ul>
 							<?php 
 								include_once 'model/function.php';
@@ -106,10 +107,11 @@
 							
 						</ul>
 					</div>
-					<div class="head-name-product">
+					<div onclick="clickHideLoc(2)" class="head-name-product">
 						<b>MÀU SẮC</b>
+						<i class="fas fa-sort-down"></i>
 					</div>
-					<div class="types-product-left">
+					<div class="types-product-left" style="display:block;" >
 						<ul>
 							<?php 
 								include_once 'model/function.php';
@@ -126,19 +128,42 @@
 							
 						</ul>
 					</div>
-					<div class="head-name-product">
-						<b>Mức Giá</b>
+					<div onclick="clickHideLoc(3)" class="head-name-product">
+						<b >MỨC GIÁ</b>
+						<i class="fas fa-sort-down"></i>
 					</div>
-					<div class="types-product-left">
+					<div class="types-product-left" style="display:block;" >
 						<ul>
-							<li><input type="radio" name="gia"> Dưới 100.000đ</li>
-							<li><input type="radio" name="gia"> 100.000đ - 200.000đ</li>
-							<li><input type="radio" name="gia"> 200.000đ - 300.000đ</li>
-							<li><input type="radio" name="gia"> 300.000đ - 500.000đ</li>
-							<li><input type="radio" name="gia"> 500.000đ - 1.000.000đ</li>
-							<li><input type="radio" name="gia"> Trên 1.000.000đ</li>
-							<li><input type="radio" name="gia"> Trên 3.000.000đ</li>		
-							<li><input type="radio" name="gia"> Trên 5.000.000đ</li>
+							<li><input 
+					onchange="onChangeJS1('<?php echo $type; ?>','0','100000')" 
+					type="radio" name="gia"> Dưới 100.000đ</li>
+							<li><input 
+					onchange="onChangeJS1('<?php echo $type; ?>','100000','200000')" 
+					type="radio" name="gia"> 100.000đ - 200.000đ</li>
+							<li><input
+					onchange="onChangeJS1('<?php echo $type; ?>','200000','300000')" 
+					type="radio" name="gia"> 200.000đ - 300.000đ</li>
+							<li><input 
+					onchange="onChangeJS1('<?php echo $type; ?>','300000','500000')" 
+					type="radio" name="gia"> 300.000đ - 500.000đ</li>
+							<li><input
+					onchange="onChangeJS1('<?php echo $type; ?>','500000','1000000')"
+					type="radio" name="gia"> 500.000đ - 1.000.000đ</li>
+							<li><input 
+					onchange="onChangeJS1('<?php echo $type; ?>','1000000','3000000')"
+					type="radio" name="gia"> 1.000.000đ - 3.000.000đ</li>
+							<li><input 
+					onchange="onChangeJS1('<?php echo $type; ?>','3000000','5000000')"
+					type="radio" name="gia"> 3.000.000đ - 5.000.000đ</li>		
+							<li><input 
+					onchange="onChangeJS1('<?php echo $type; ?>','5000000','10000000')"
+					type="radio" name="gia"> 5.000.000đ - 10.000.000đ</li>
+							<li><input 
+					onchange="onChangeJS1('<?php echo $type; ?>','10000000','30000000')"
+					type="radio" name="gia"> 10.000.000đ - 30.000.000đ</li>
+							<li><input
+					onchange="onChangeJS1('<?php echo $type; ?>','30000000','100000000')"
+					type="radio" name="gia"> Trên 30.000.000đ</li>
 						</ul>
 					</div>
 				</div>
@@ -146,13 +171,15 @@
 					<div id="loctimsp">
 						<ul style="padding: 0px 0px 20px 0px;border-bottom: 1px solid #ccc;">
 							<li><b>Ưu tiên xem</b></li>
-							<li><input type="radio" name="sanpham" value="hangmoive"> Hàng Mới về</li>
-							<li><input type="radio" name="sanpham" value="hangcunhat"> Hàng Cũ Nhất</li>
-							<li><input type="radio" name="sanpham" value="giatangdan"> Giá Tăng Dần</li>
-							<li><input type="radio" name="sanpham" value="giagiamdan"> Giá Giảm Dần</li>
+							<li><input onchange="onChangeJS2('<?php echo $type; ?>'
+							,'1')" type="radio" name="sanpham" value="hangmoive"> Hàng Mới về</li>
+							<li><input onchange="onChangeJS2('<?php echo $type; ?>'
+							,'4')" type="radio" name="sanpham" value="hangyeuthichnhat"> Hàng Yêu Thích Nhất</li>
+							<li><input type="radio" onchange="onChangeJS2('<?php echo $type; ?>','ASC')" name="sanpham" value="giatangdan"> Giá Tăng Dần</li>
+							<li><input type="radio" onchange="onChangeJS2('<?php echo $type; ?>','DESC')" name="sanpham" value="giagiamdan"> Giá Giảm Dần</li>
 						</ul>
 					</div>
-					<div class="product">
+					<div id="main_product">
 						<?php include_once 'processLoc.php'; ?>
 					</div>
 			</div>

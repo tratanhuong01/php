@@ -78,7 +78,7 @@
                 <div class="container-product">
                 <div id="full-content-ten">
                     <div class="product-left">
-                        <img id="changePicture1" 
+                        <img id="changePicture" 
                 src="images/images-product/<?php echo $sp->getAnhSanPham().$sp->getIDMau().".png" ?>">
                     </div>
                     

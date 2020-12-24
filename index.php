@@ -131,7 +131,7 @@
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -146,6 +146,9 @@
 				<?php		
 					}
 				?>	
+			</div>
+			<div style="padding: 6px 0px 15px 0px;text-align: center;">
+				<h5><a href="product.php?type=dien-thoai">Xem Chi Tiết</a></h5>
 			</div>
 			<div id="title-product">
 				<h2>SẢN PHẨM BÁN CHẠY - LAPTOP</h2>
@@ -171,7 +174,7 @@
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a>
 							</div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
@@ -187,6 +190,9 @@
 				<?php		
 					}
 				?>	
+			</div>
+			<div style="padding: 6px 0px 15px 0px;text-align: center;">
+				<h5><a href="product.php?type=lap-top">Xem Chi Tiết</a></h5>
 			</div>
 			<div id="title-product">
 				<h2>SẢN PHẨM BÁN CHẠY - TABLET</h2>
@@ -212,7 +218,7 @@
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -227,6 +233,9 @@
 				<?php		
 					}
 				?>	
+			</div>
+			<div style="padding: 6px 0px 15px 0px;text-align: center;">
+				<h5><a href="product.php?type=tablet">Xem Chi Tiết</a></h5>
 			</div>
 			<div id="title-product">
 				<h2>SẢN PHẨM BÁN CHẠY - PHỤ KIỆN</h2>
@@ -252,7 +261,7 @@
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -267,6 +276,9 @@
 				<?php		
 					}
 				?>	
+			</div>
+			<div style="padding: 6px 0px 15px 0px;text-align: center;">
+				<h5><a href="product.php?type=phu-kien">Xem Chi Tiết</a></h5>
 			</div>
 			<div id="title-product">
 				<h2>SẢN PHẨM BÁN CHẠY - ĐỒNG HỒ THÔNG MINH</h2>
@@ -292,7 +304,7 @@
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -307,6 +319,9 @@
 				<?php		
 					}
 				?>	
+			</div>
+			<div style="padding: 6px 0px 15px 0px;text-align: center;">
+				<h5><a href="product.php?type=dong-ho-thong-minh">Xem Chi Tiết</a></h5>
 			</div>
 			<div id="title-product">
 				<h2>SẢN PHẨM BÁN CHẠY - ĐỒNG HỒ THỜI TRANG</h2>
@@ -332,7 +347,7 @@
 							echo $value->getIDMau(); ?>&BoNho=<?php
 							echo $value->getBoNho(); ?>&DSP=<?php 
 							echo $value->getIDDongSanPham(); ?>"><b>
-								<?php echo substr($value->getTenSanPham(),0,40); ?></b></a></div>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a></div>
 								<div class="cost" style="font-size: 12px;">
 									<b>Giá : <?php echo number_format($value->getDonGia()
 										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
@@ -347,6 +362,9 @@
 				<?php		
 					}
 				?>	
+			</div>
+			<div style="padding: 6px 0px 15px 0px;text-align: center;">
+				<h5><a href="product.php?type=dong-ho-thoi-trang">Xem Chi Tiết</a></h5>
 			</div>
 			<div class="banner2 wow bounceInUp">
 				<a href="#"><img src="images/banner2.png"></a>

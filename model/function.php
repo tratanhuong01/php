@@ -272,11 +272,11 @@
 		}
 		return $str;
 	}
-	function getArrSanPham() {
+	function getArrSanPham($s) {
 		$arr = array();
 		try {
 			$conn = getConnection();
-			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau ";
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau " . $s ." LIMIT 12";
 			$stm = $conn->prepare($query);
 			$stm->execute();
 			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
@@ -297,7 +297,7 @@
 		try {
 			$conn = getConnection();
 			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau 
-				WHERE nhomsanpham.IDNhomSanPham = ? AND sanpham.Loai = 3 LIMIT 15 ";
+				WHERE nhomsanpham.IDNhomSanPham = ? AND sanpham.Loai = 3 LIMIT 10 ";
 			$stm = $conn->prepare($query);
 			$stm->execute([$idNhomSanPham]);
 			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
@@ -409,7 +409,7 @@
 		try {
 			$conn = getConnection();
 			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau 
-				WHERE nhomsanpham.IDNhomSanPham = ? AND sanpham.".$whereType." = ? LIMIT 15";
+				WHERE nhomsanpham.IDNhomSanPham = ? AND sanpham.".$whereType." = ? LIMIT 12";
 			$stm = $conn->prepare($query);
 			$stm->execute([$idNhomSanPham,$value]);
 			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {

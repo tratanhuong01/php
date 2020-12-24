@@ -67,6 +67,7 @@
 	top: 65px !important;
 	line-height: normal;
 	text-align: left;
+	z-index: 1000;
 }
 .icon_i {
 	width: 60px;

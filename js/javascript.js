@@ -314,7 +314,7 @@ function xoaSPGioHang(str) {
     window.location.href = 'cart.php';
 }
 function onChangeJS(valueType,Column,Data) {
-    var product = document.getElementsByClassName('product')[0];
+    var product = document.getElementById('main_product');
     var child = product.lastElementChild; 
     while (child) { 
         product.removeChild(child); 
@@ -329,4 +329,102 @@ function onChangeJS(valueType,Column,Data) {
     xhttp.open("GET", "processLoc.php?TypeLoc=" + 
         valueType + "&Column=" + Column+ "&Data=" + Data,true);
     xhttp.send();
+}
+function onChangeJS1(TypeLoc,from,to) {
+    var product = document.getElementById('main_product');
+    var child = product.lastElementChild; 
+    while (child) { 
+        product.removeChild(child); 
+        child = product.lastElementChild; 
+    }
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            product.innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "processLoc.php?type1=" + TypeLoc+ 
+                                    "&from=" + from +
+                                    "&to=" + to,true);
+    xhttp.send();
+}
+function onChangeJS2(TypeLoc,types) {
+    var product = document.getElementById('main_product');
+    var child = product.lastElementChild; 
+    while (child) { 
+        product.removeChild(child); 
+        child = product.lastElementChild; 
+    }
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            product.innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "processLoc.php?TypeLoc=" + TypeLoc+ "&types=" + types,true);
+    xhttp.send();
+}
+function clickHideLoc(num) {
+    var f = document.getElementsByClassName('types-product-left');
+    if (f[num].style.display == 'block') { 
+        f[num].style.animationName = 'anLoc';
+        f[num].style.animationDuration = '1s';
+        f[num].style.display = 'none';
+    }
+    else {
+        f[num].style.animationName = 'hienLoc';
+        f[num].style.animationDuration = '1s';
+        f[num].style.display = 'block';
+    }
+}
+var chiTietSanPham = document.getElementById("information-about-product-left")
+var cauHoiThuongGap = document.getElementById("answer-sometimes")
+var nhanXetSanPham = document.getElementById("rating-guest")
+var loadingProduct2 =document.getElementById("loading-product")
+
+
+var mangCTSP = [
+    chiTietSanPham,
+    cauHoiThuongGap,
+    nhanXetSanPham
+]
+function OpenCTSanPham()
+{
+    loadingProduct2.style.display = 'block'
+    mangCTSP[1].style.opacity = '0.3'
+    mangCTSP[2].style.opacity = '0.3'
+    setTimeout(function(){
+        mangCTSP[0].style.display = 'block'
+        mangCTSP[1].style.display = 'none'
+        mangCTSP[2].style.display = 'none'
+        loadingProduct2.style.display = 'none'
+    },2000)
+    mangCTSP[0].style.opacity = '1'
+}
+function OpenCHThuongGap()
+{
+    loadingProduct2.style.display = 'block'
+    mangCTSP[0].style.opacity = '0.3'
+    mangCTSP[2].style.opacity = '0.3'
+    setTimeout(function(){
+        mangCTSP[1].style.display = 'block'
+        mangCTSP[0].style.display = 'none'
+        mangCTSP[2].style.display = 'none'
+        loadingProduct2.style.display = 'none'
+    },2000)
+    mangCTSP[1].style.opacity = '1'
+}
+function OpenNXSanPham()
+{
+    loadingProduct2.style.display = 'block'
+    mangCTSP[0].style.opacity = '0.3'
+    mangCTSP[1].style.opacity = '0.3'
+    setTimeout(function(){
+        mangCTSP[2].style.display = 'block'
+        mangCTSP[0].style.display = 'none'
+        mangCTSP[1].style.display = 'none'
+        loadingProduct2.style.display = 'none'
+    },2000)
+    mangCTSP[2].style.opacity = '1'
+    
 }

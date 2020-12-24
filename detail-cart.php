@@ -32,8 +32,8 @@
 						<a href=""><img src="images/images-product/<?php echo $img; ?>"></a>
 					</div>
 					<div class="cart-top-right">
-						<div style="width: 100%;height: 36px;">
-							<a href=""><b><?php echo $value->getTenSanPham(); ?></b></a>
+						<div style="width: 98%;height: 50px;">
+							<a href=""><b><?php echo substr($value->getTenSanPham(), 0,40); ?></b></a>
 						</div>
 						<div style="width: 100%;height: 100px;" class="infosss">
 							<span>Màu : <?php echo $value->getMau(); ?></span><br>

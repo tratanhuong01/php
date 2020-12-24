@@ -29,8 +29,8 @@
 }
 .product-left11 img {
 	width: 100%;
-	padding: 1em;
-	object-fit: cover;
+	padding: 2em;
+	object-fit: contain;
 	height: 360px;
 }
 .product-center-one {
