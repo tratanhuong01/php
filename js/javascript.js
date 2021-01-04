@@ -23,6 +23,27 @@ function giamSoLuong()
         duLieu.value = 1
     }
 }
+function tangSoLuongCart(index)
+{
+    var duLieu = document.getElementsByClassName("dulieuCart")[index]
+    duLieu.value++;
+    // if (duLieu) {
+    //     if (duLieu[index].value > 100) 
+    //     {
+    //         duLieu[index].value = 100
+    //     }
+    // }
+}
+function giamSoLuongCart(index) 
+{
+    var duLieu = document.getElementsByClassName("dulieuCart")[index]
+    duLieu.value--
+    // if (duLieu) {
+    //     if (duLieu[index].value < 1) {
+    //         duLieu[index].value = 1
+    //     }
+    // }
+}
 var topWeb = document.getElementById("back-to-top")
 window.onscroll = function()
 {

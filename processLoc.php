@@ -40,6 +40,8 @@
 		}
 		else
 			$arr = getSanPhamGia(switchType($_REQUEST['type1']),$_REQUEST['from'],$_REQUEST['to']);
+	else if (isset($_REQUEST['valueInputSearch'])) 
+		$arr = searchProduct(str_replace("+"," ",$_REQUEST['valueInputSearch']));
 	else  $arr = getArrSanPham("");
 
 

@@ -62,9 +62,11 @@
 			<a href="trangchu.html"><img src="images/logo.png"></a>
 		</div>
 		<div id="search-header">
-			<form action="product.php?search=true" method="get">
-				<input id="inputss" type="text" name="text" placeholder="Nhập tên sản phẩm.." value=""><button type="submit"><i
-					class="fa fa-search" aria-hidden="true"></i></button>
+			<form action="product.php" method="get">
+				<input id="inputss" type="text" placeholder="Nhập tên sản phẩm.." 
+				value="<?= isset($_REQUEST['valueInputSearch']) ?
+							$_REQUEST['valueInputSearch'] : "" ?>" name="valueInputSearch">
+				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</form>
 		</div>
 		<div id="header-right">

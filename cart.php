@@ -21,7 +21,8 @@
 <body>
     <?php include_once 'model/Function.php';
     include_once 'model/KhachHang.php';
-    session_start(); ?>
+    session_start(); 
+    include_once 'DiaglogMessage.php'; ?>
     <i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
     <!-- Back To Top -->
     <div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
@@ -50,22 +51,24 @@
                 <div class="cart-left">
                     <table>
                         <tr>
-                            <th style="width: 60%;">SẢN PHẨM</th>
-                            <th style="width: 15%;">GIÁ</th>
-                            <th style="width: 10%;">SL</th>
-                            <th style="width: 15%;">TỔNG</th>
+                            <th style="width: 60%;text-align:center;">SẢN PHẨM</th>
+                            <th style="width: 15%;text-align:center;">GIÁ</th>
+                            <th style="width: 10%;text-align:center;">SL</th>
+                            <th style="width: 15%;text-align:center;">TỔNG</th>
                         </tr>
                         <tr>
                             <th colspan="4"><hr style="width: 100%;border: 2px solid cadetblue;
                             background-color: cadetblue;"></th>
                         </tr>
+                        <form action="processCapNhatGioHang.php" method="post" style="width:100%;">
                         <?php 
                                 include_once 'model/function.php';
                                 include_once 'model/GioHang.php';
                                 include_once 'model/KhachHang.php';
                                 if (isset($_SESSION['user'])) {
+                                    $i = 0;
                                     $arr = getSanPhamByGioHang($_SESSION['user']->getIDKhachHang());
-                                    foreach ($arr as $key => $value) {
+                                    foreach ($arr as $key => $value) { 
                             ?>
                         <tr>
                             
@@ -93,10 +96,11 @@
                                     <?php echo number_format($value->getDonGia()); ?>đ</p>
                             </td>
                             <td>
-                                <form action="" method="post" class="number-cart">
-                                    <span onclick="giamSoLuong()">-</span><input type="text" style="width: 30px;" id="dulieu" name="dulieu"
-                                    value="<?php echo $value->getSoLuong(); ?>" ><span  onclick="tangSoLuong()">+</span>
-                                </form>
+                                    <span onclick="giamSoLuongCart('<?= $i ?>')"  style="cursor: pointer;">--</span>
+                                    <input type="text" style="width: 30px;text-align:center;" class="dulieuCart" 
+                                    name="<?= $value->getIDsanPham(); ?>"
+                                    value="<?php echo $value->getSoLuong(); ?>" >
+                                    <span  onclick="tangSoLuongCart('<?= $i ?>')" style="cursor: pointer;">+</span>
                             </td>
                             <td>
                                 <p style="color: red;font-weight: bold;margin: 0;">
@@ -104,11 +108,13 @@
                             </td>
                         </tr>
                             <?php 
+                                $i++;
                                 } 
                             }?>
                     </table>
                     <a href="product.php" id="tieptuc"> -- TIẾP TỤC XEM SẢN PHẨM</a>
-                    <a href="" id="capnhat"> -- CẬP NHẬT GIỎ HÀNG</a>
+                    <button type="submit" id="capnhat" name="capNhatGioHang"> -- CẬP NHẬT GIỎ HÀNG</button>
+                    </form>
                 </div>
                 <div class="cart-right">
                     <table>
@@ -159,7 +165,6 @@
             </div>
             <?php include 'footer.php'; ?>    
         </div>
-        
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -171,6 +176,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="js/javascript.js"></script>
+    <script src="js/jsMain.js"></script>
     <script src="js/process-form.js"></script>
     <script src="js/colorAndMemoryOption.js"></script>
 </body>

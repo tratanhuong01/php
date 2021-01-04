@@ -59,6 +59,7 @@ function ookoo() {
     var opacityweb = document.getElementById('web');
     var xhttp = new XMLHttpRequest();
     loadingProduct.style.display = 'block'
+    loadingProduct.style.zIndex = '100000'
     opacityweb.style.opacity = '0.2'
     setTimeout(function() {
         document.getElementById("myForm").submit();
@@ -152,7 +153,7 @@ function onChangeJS(valueType,Column,Data) {
         valueType + "&Column=" + Column+ "&Data=" + Data,true);
     xhttp.send();
 }
-function onChangeJS1(TypeLoc,from,to) {
+function onChangeJSCost(TypeLoc,from,to) {
     var product = document.getElementById('main_product');
     var child = product.lastElementChild; 
     while (child) { 

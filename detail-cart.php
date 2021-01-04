@@ -7,6 +7,7 @@
 	}
 ?>
 <div id="cart-de">
+
 	<div id="fullmaincart" style="display: block;">
 		<div style="width: 100%;height: 50px;position: fixed;line-height: 50px;
 		display: flex;">
@@ -63,8 +64,14 @@
 			include_once 'model/function.php'; echo number_format(tinhTongTienGioHang($_SESSION['user']->getIDKhachHang())); ?>đ</p>
 			<hr>
 			<form>
-				<button>Xem Giỏ Hàng</button>
-				<button>Thanh Toán</button>
+				<div style="width:100%;display:flex;">
+				<div style="width:50%;text-align:center;padding:20px 0px;">
+				<a href="cart.php" style="font-weight:bold;">Xem Giỏ Hàng</a>
+				</div>
+				<div style="width:50%;text-align:center;padding:20px 0px;">
+				<a href="" style="font-weight:bold;">Thanh Toán</a>
+				</div>
+				</div>
 			</form>
 		</div>
 	</div>

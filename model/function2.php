@@ -85,4 +85,28 @@
 		}
 		return $arr;
 	}
+	function searchProduct($input) {
+		$arr = array();
+		try {
+			$conn = getConnection();
+			$query = "SELECT sanpham.IDSanPham,sanpham.TenSanPham,sanpham.IDDongSanPham,nhomsanpham.TenNhom, 
+			sanpham.DonGia,sanpham.Giam, sanpham.AnhSanPham, sanpham.IDMau, mausanpham.TenMau,sanpham.ThuongHieu ,
+			sanpham.BoNho,mausanpham.rgbcolor FROM sanpham INNER JOIN dongsanpham ON dongsanpham.IDDongSanPham = 
+			sanpham.IDDongSanPham INNER JOIN nhomsanpham ON nhomsanpham.IDNhomSanPham = dongsanpham.IDNhomSanPham 
+			INNER JOIN mausanpham ON sanpham.IDMau = mausanpham.IDMau WHERE sanpham.TenSanPham LIKE '%" .$input. "%'";
+			$stm = $conn->prepare($query);
+			$stm->execute();
+			while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
+				$sp = new SanPham($row['IDSanPham'],$row['TenSanPham'],$row['IDDongSanPham'],
+					$row['TenNhom'],$row['DonGia'],$row['Giam'],$row['AnhSanPham'],
+					$row['IDMau'],$row['TenMau'],$row['ThuongHieu'],
+					$row['BoNho'],$row['rgbcolor']);
+				$arr[$row['IDSanPham']] = $sp;
+			}
+			return $arr;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		return $arr;
+	}
 ?>

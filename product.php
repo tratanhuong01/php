@@ -23,7 +23,7 @@
 	<i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
 	<i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 	<div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
-		
+	
 	</div>
 	<div id="demo" style="width: 100%;">
 		<div id="modalsp" style="display: none;">
@@ -135,34 +135,34 @@
 					<div class="types-product-left" style="display:block;" >
 						<ul>
 							<li><input 
-					onchange="onChangeJS1('<?php echo $type; ?>','0','100000')" 
+					onchange="onChangeJSCost('<?php echo $type; ?>','0','100000')" 
 					type="radio" name="gia"> Dưới 100.000đ</li>
 							<li><input 
-					onchange="onChangeJS1('<?php echo $type; ?>','100000','200000')" 
+					onchange="onChangeJSCost('<?php echo $type; ?>','100000','200000')" 
 					type="radio" name="gia"> 100.000đ - 200.000đ</li>
 							<li><input
-					onchange="onChangeJS1('<?php echo $type; ?>','200000','300000')" 
+					onchange="onChangeJSCost('<?php echo $type; ?>','200000','300000')" 
 					type="radio" name="gia"> 200.000đ - 300.000đ</li>
 							<li><input 
-					onchange="onChangeJS1('<?php echo $type; ?>','300000','500000')" 
+					onchange="onChangeJSCost('<?php echo $type; ?>','300000','500000')" 
 					type="radio" name="gia"> 300.000đ - 500.000đ</li>
 							<li><input
-					onchange="onChangeJS1('<?php echo $type; ?>','500000','1000000')"
+					onchange="onChangeJSCost('<?php echo $type; ?>','500000','1000000')"
 					type="radio" name="gia"> 500.000đ - 1.000.000đ</li>
 							<li><input 
-					onchange="onChangeJS1('<?php echo $type; ?>','1000000','3000000')"
+					onchange="onChangeJSCost('<?php echo $type; ?>','1000000','3000000')"
 					type="radio" name="gia"> 1.000.000đ - 3.000.000đ</li>
 							<li><input 
-					onchange="onChangeJS1('<?php echo $type; ?>','3000000','5000000')"
+					onchange="onChangeJSCost('<?php echo $type; ?>','3000000','5000000')"
 					type="radio" name="gia"> 3.000.000đ - 5.000.000đ</li>		
 							<li><input 
-					onchange="onChangeJS1('<?php echo $type; ?>','5000000','10000000')"
+					onchange="onChangeJSCost('<?php echo $type; ?>','5000000','10000000')"
 					type="radio" name="gia"> 5.000.000đ - 10.000.000đ</li>
 							<li><input 
-					onchange="onChangeJS1('<?php echo $type; ?>','10000000','30000000')"
+					onchange="onChangeJSCost('<?php echo $type; ?>','10000000','30000000')"
 					type="radio" name="gia"> 10.000.000đ - 30.000.000đ</li>
 							<li><input
-					onchange="onChangeJS1('<?php echo $type; ?>','30000000','100000000')"
+					onchange="onChangeJSCost('<?php echo $type; ?>','30000000','100000000')"
 					type="radio" name="gia"> Trên 30.000.000đ</li>
 						</ul>
 					</div>
