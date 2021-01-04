@@ -62,8 +62,10 @@
 			<a href="trangchu.html"><img src="images/logo.png"></a>
 		</div>
 		<div id="search-header">
-			<input id="inputss" type="text" name="text" placeholder="Nhập tên sản phẩm.." value=""><button type="submit"><i
+			<form action="product.php?search=true" method="get">
+				<input id="inputss" type="text" name="text" placeholder="Nhập tên sản phẩm.." value=""><button type="submit"><i
 					class="fa fa-search" aria-hidden="true"></i></button>
+			</form>
 		</div>
 		<div id="header-right">
 			<?php if (isset($_SESSION['user'])) { $kh = $_SESSION['user'];  ?>

@@ -264,5 +264,7 @@
 	<script src="js/javascript.js"></script>
 	<script src="js/process-form.js"></script>
 	<script src="js/colorAndMemoryOption.js"></script>
+	<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="js/jsMain.js"></script>
 </body>
 </html>

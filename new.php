@@ -20,26 +20,6 @@
 	<?php include_once 'model/Function.php';
 	include_once 'model/KhachHang.php';
 	session_start(); ?>
-	<div id="product-bought">
-		<div id="added">
-			<p><b><i class="fas fa-check"></i>&nbsp;&nbsp;Sản Phẩm Vừa Được Thêm Vào Giỏ Hàng</b></p>
-			<hr>
-			<div class="added-one">
-				<div class="added-one-one">
-					<a href=""><img src="images/images-product/100.png"></a>
-				</div>
-				<div class="added-one-two">
-					<p>#000000</p>
-					<p><b style="color: red;">299.000đ</b></p>
-					<p>40</p>
-				</div>
-			</div>
-			<hr>
-			<p><i class="fas fa-chevron-right"></i>&nbsp;Giỏ Hàng Hiện Có <span>(20)</span>Sản Phẩm</p>
-			<button id="start-paid">Tiến Hành Thanh Toán &nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
-			<i onclick="CloseGioHang()" id="close-added" class="fas fa-times-circle"></i>
-		</div>
-	</div>
 	<i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
 	<?php include 'DiaglogMessage.php'; ?>
 	<div id="web">
@@ -115,5 +95,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="js/javascript-tintuc.js"></script>
 	<script src="js/process-form.js"></script>
+	<script type="text/javascript" src="js/javascript.js"></script>
+	<script type="text/javascript" src="js/jsMain.js"></script>
 </body>
 </html>

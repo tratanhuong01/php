@@ -28,20 +28,20 @@
 
 <body>
 
-	<?php include_once 'model/Function.php';
-	include_once 'model/KhachHang.php';
-	session_start(); ?>
+	<?php 
+		include_once 'model/Function.php';
+		include_once 'model/KhachHang.php';
+		session_start(); 
+	?>
 	<i onclick="topFunction()" id="back-to-top" class="fas fa-arrow-circle-up"></i>
 	<i id="loading-product" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-	<div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
-		
+	<div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;
+						z-index: 99999127;background-color: white;">	
 	</div>
 	<div id="demo" style="width: 100%;">
-		<div id="modalsp" style="display: none;">
-		</div>
+		<div id="modalsp" style="display: none;"></div>
 	</div>
-	<div id="cart-web" style="width: 100%;">
-
+	<div id="cart-web" style="width: 100%;">	
 	</div>
 	
 	<div id="web">
@@ -52,7 +52,6 @@
 				if (isset($_SESSION['user'])) {
 					$arr[0] = $soLuong;
 					$arr[1] = $id;
-					
 					$_SESSION['arrData'] = $arr;
 					include_once 'model/modalProduct.php';
 					echo dis();
@@ -68,7 +67,6 @@
 		<?php include 'DiaglogMessage.php'; ?>
 		<div id="imaaaa" style="width: 100%;height: 550px;">
 			<img style="width: 100%;height: 550px;" src="images/anhnen1.png">
-
 		</div>
 		<div class="wrapper">
 			<div id="type-shoes">
@@ -374,18 +372,40 @@
 				<h6>Những sản phẩm mới nhất được shop nhập về phục vụ tín đồ</h6>
 			</div>
 			<div class="product">
-				<div class="name-product">
-					<a href="#"><img src="images/images-product/10.1.png"><br></a>
-					<div class="view-modal-product">
-						<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</div>
-					<a href="#"><b>Giày #000009</b></a><br>
-					<div class="cost" style="font-size:12px"><b>799.000đ</b>&nbsp;&nbsp;&nbsp;
-					</div>
-					<div class="buy-now">
-						<button type="submit">Mua Ngay</button>
-					</div>
-				</div>
+				<?php 
+					include_once 'model/function.php';
+					$arr = getArrSanPhamByID(switchType('dong-ho-thoi-trang')); 
+					foreach ($arr as $key => $value) { 
+				?>
+						<div class="name-product">
+							<a href="detail-product.html"><img src="images/images-product/<?php 
+									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
+									data-zoom-image="" id="zoom"><br></a>
+							<div class="view-modal-product">
+								<button onclick="openModal('<?php echo $value->getIDSanPham(); ?>')" type="button"><i class="fa fa-search"
+										aria-hidden="true"></i></button>
+							</div>
+							<div style="width: 100%;">
+								<div style="width: 100%;height: 50px;">
+							<a href="detail-product.php?Mau=<?php 
+							echo $value->getIDMau(); ?>&BoNho=<?php
+							echo $value->getBoNho(); ?>&DSP=<?php 
+							echo $value->getIDDongSanPham(); ?>"><b>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a></div>
+								<div class="cost" style="font-size: 12px;">
+									<b>Giá : <?php echo number_format($value->getDonGia()
+										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
+										 <strike><?php echo number_format($value->getDonGia()); ?>đ</strike>
+								</div>
+								<div class="buy-now">
+									<button onclick="window.location.href = 
+									'detail-product.php?IDSP=<?php echo $value->getIDSanPham(); ?>'">Mua Ngay</button>
+								</div>
+							</div>
+						</div>
+				<?php		
+					}
+				?>	
 			</div>
 			<div id="title-product">
 				<h2>TIN MỚI NHẤT</h2>
@@ -454,6 +474,7 @@
 			new WOW().init();
 		</script>
 		<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="js/jsMain.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script type="text/javascript" src="js/process-form.js"></script>
 		<script src="js/colorAndMemoryOption.js"></script>

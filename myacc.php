@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css\style-myacc.css">
     <link rel="shortcut icon" href="images/images.ico" />
+    <link rel="stylesheet" href="css/style-trangchu.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/support.css">
@@ -109,7 +110,7 @@
                                         </tr>
                                         <tr>
                                             <td class="cellspacing">Giới Tính</td>
-                                            <td><input type="radio" name="gioitinh" value="nam"> Nam &nbsp;&nbsp; <input
+                                            <td><input type="radio" name="gioitinh" value="nam" checked> Nam &nbsp;&nbsp; <input
                                                     type="radio" name="gioitinh" value="nu"> Nữ &nbsp;&nbsp;&nbsp;
                                                 <input type="radio" name="gioitinh" value="khac"> Khác</td>
                                         </tr>
@@ -117,7 +118,7 @@
                                             <td class="cellspacing">Ngày Sinh</td>
                                             <td class="profile-radio">
                                                 <select>
-                                                    <option>1</option>
+                                                    <option selected>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
                                                     <option>4</option>
@@ -138,13 +139,13 @@
                                                     <option>Tháng 7</option>
                                                     <option>Tháng 8</option>
                                                     <option>Tháng 9</option>
-                                                    <option>Tháng 10</option>
+                                                    <option selected>Tháng 10</option>
                                                     <option>Tháng 11</option>
                                                     <option>Tháng 12</option>
                                                 </select>
                                                 <select>
                                                     <option>2000</option>
-                                                    <option>2001</option>
+                                                    <option selected>2001</option>
                                                     <option>2002</option>
                                                     <option>2003</option>
                                                     <option>2004</option>
@@ -194,8 +195,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bank1b">
-                        <b>Bạn Chưa Thêm Thẻ Ngân Hàng</b>
+                    <div class="address2">
+                        <div class="address-table1">
+                            <table class="address-table">
+                                <tr>
+                                    <td>Loại Ngân Hàng : TP Bank</td>
+                                    <td>Trà Hưởng <button>Mặc Định</button> <button>Thẻ Thanh Toán</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Tên Ngân Hàng : </td>
+                                    <td>Ngân Hàng Tiên Phong</td>
+                                </tr>
+                                <tr>
+                                    <td>Tên Tài Khoản : </td>
+                                    <td>TRA TAN HUONG</td>
+                                </tr>
+                                <tr>
+                                    <td>Số Tài Khoản : </td>
+                                    <td>03203192701</td>
+                                </tr>
+                                <tr>
+                                    <td>Chi Nhánh : </td>
+                                    <td>TTGD TU DONG LIVEBANK DN</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="address-right" style="padding-top:2em;">
+                            <button><a href="">Xóa</a></button>
+                            <button><a href="">Sửa</a></button> <br>
+                            <button id="last-buttton">Thiết Lập Mặt Định</button>
+                        </div>
                     </div>
                 </div>
                 <div id="address">
@@ -316,6 +345,8 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="js/javascript-myacc.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="js/jsMain.js"></script>
 </body>
 
 </html>

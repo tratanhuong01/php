@@ -2,7 +2,7 @@
 	include_once 'KhachHang.php';
 	include_once 'GioHang.php';
 	include_once 'SanPham.php';
-	include 'ConnectMySQL.php';
+	include_once 'ConnectMySQL.php';
 	function insertTaiKhoan($idKhachHang,$ho,$ten,$email,$soDienThoai,
 		$diaChi,$gioiTinh,$ngaySinh,$matKhau) {
 		$sql_khachHang = "INSERT INTO `khachhang`(`IDKhachHang`, `Ho`, `Ten`, `Email`, `SoDienThoai`, `DiaChi`, `GioiTinh`, `NgaySinh`)VALUES (?,?,?,?,?,?,?,?)";

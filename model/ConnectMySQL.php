@@ -9,7 +9,7 @@
             $conn = new PDO("mysql:host=$host;dbname=$nameDB", $username, $password);
             return $conn;
         } catch (Exception $e) {
-           $e->getMessage();
+           echo $e->getMessage();
         }
         return $conn;
     }
