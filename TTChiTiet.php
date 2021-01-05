@@ -15,6 +15,7 @@
 		return $arr;
     } 
 ?>
+    <?php if (isset($_SESSION['iddongsanpham']) && isset($_SESSION['anhsanpham'])) { ?>
         <?php $arr = getTTChiTiet($_SESSION['iddongsanpham']); ?>
         
         <div class="wrappers">
@@ -97,4 +98,5 @@
                 </tr>
             </table>
         </div>
-    <?php unset($_SESSION['iddongsanpham']); unset($_SESSION['anhsanpham']); ?>
+        <?php unset($_SESSION['iddongsanpham']); unset($_SESSION['anhsanpham']); } ?>
+    
