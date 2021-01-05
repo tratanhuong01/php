@@ -200,3 +200,26 @@ function clickHideLoc(num) {
         f[num].style.display = 'block';
     }
 }
+function clickHienInfo() {
+    var oModal = document.getElementsByClassName("wrappers")[0]
+    var opacityweb = document.getElementById("web")
+    var dong = document.getElementById("dong")
+    var loadingProduct = document.getElementById("loading-product")
+    opacityweb.style.opacity = '0.2'
+    loadingProduct.style.display = 'block'
+    
+    setTimeout(function(){
+        opacityweb.style.opacity = '0.2'
+        oModal.style.display = 'block'
+        dong.style.display = 'block'
+        loadingProduct.style.display = 'none'
+    },2000)
+}
+function closeHienInfo() {
+    var oModal = document.getElementsByClassName("wrappers")[0]
+    var opacityweb = document.getElementById("web")
+    var dong = document.getElementById("dong")
+    opacityweb.style.opacity = '1'
+    oModal.style.display = 'none'
+    dong.style.display = 'none'
+}

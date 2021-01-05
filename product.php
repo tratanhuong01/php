@@ -186,71 +186,39 @@
 		</div>
 		<div style="padding: 40px;"><h3>CÓ THỂ BẠN THÍCH</h3></div>
 		<div class="canyoulike">
-			<div class="name-product">
-				<a href="#"><img src="images/images-product/15.1.png"><br></a>
-				<div class="view-modal-product">
-					<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-				</div>
-				<a href="#"><b>Giày #000021</b></a><br>
-				<div class="cost" style="font-size: 12px;">
-					<b>Giá : 490.000đ</b>
-				</div>
-				<div class="buy-now">
-					<button type="submit">Mua Ngay</button>
-				</div>
-			</div>
-			<div class="name-product">
-				<a href="#"><img src="images/images-product/16.1.png"><br></a>
-				<div class="view-modal-product">
-					<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-				</div>
-				<a href="#"><b>Giày #000022</b></a>
-				<div class="cost" style="font-size: 12px;">
-					<b>Giá : 520.000đ</b>&nbsp;&nbsp;&nbsp;<strike>720.000đ</strike>
-				</div>
-				<div class="buy-now">
-					<button type="submit">Mua Ngay</button>
-				</div>
-			</div>
-			<div class="name-product">
-				<a href="#"><img src="images/images-product/17.1.png"><br></a>
-				<div class="view-modal-product">
-					<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-				</div>
-				<a href="#"><b>Giày #000023</b></a>
-				<div class="cost" class="cost" style="font-size: 12px;">
-					<b>Giá : 1.200.000đ</b>&nbsp;&nbsp;&nbsp;<strike>1.320.000đ</strike>
-				</div>
-				<div class="buy-now">
-					<button type="submit">Mua Ngay</button>
-				</div>
-			</div>
-			<div class="name-product">
-				<a href="#"><img src="images/images-product/18.1.png"><br></a>
-				<div class="view-modal-product">
-					<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-				</div>
-				<a href="#"><b>Giày #000024</b></a>
-				<div class="cost" style="font-size: 12px;">
-					<b>Giá : 229.000đ</b>&nbsp;&nbsp;&nbsp;<strike>240.000đ</strike>
-				</div>
-				<div class="buy-now">
-					<button type="submit">Mua Ngay</button>
-				</div>
-			</div>
-			<div class="name-product">
-				<a href="#"><img src="images/images-product/110.png"><br></a>
-				<div class="view-modal-product">
-					<button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-				</div>
-				<a href="#"><b>Giày #000025</b></a>
-				<div class="cost" style="font-size: 12px;">
-					<b>Giá : 160.000đ</b>&nbsp;&nbsp;&nbsp;<strike>180.000đ</strike>
-				</div>
-				<div class="buy-now">
-					<button type="submit">Mua Ngay</button>
-				</div>
-			</div>
+			<?php include_once 'model/function2.php'; $arrCan = coTheBanThich(); 
+			foreach ($arrCan as $key => $value) { 
+				?>
+						<div class="name-product">
+							<a href="detail-product.html"><img src="images/images-product/<?php 
+									echo $value->getAnhSanPham().$value->getIDMau().".png"; ?>"
+									data-zoom-image="" id="zoom"><br></a>
+							<div class="view-modal-product">
+								<button onclick="openModal('<?php echo $value->getIDSanPham(); ?>')" type="button"><i class="fa fa-search"
+										aria-hidden="true"></i></button>
+							</div>
+							<div style="width: 100%;">
+								<div style="width: 100%;height: 50px;">
+							<a href="detail-product.php?Mau=<?php 
+							echo $value->getIDMau(); ?>&BoNho=<?php
+							echo $value->getBoNho(); ?>&DSP=<?php 
+							echo $value->getIDDongSanPham(); ?>"><b>
+								<?php echo substr($value->getTenSanPham(),0,60); ?></b></a></div>
+								<div class="cost" style="font-size: 12px;">
+									<b>Giá : <?php echo number_format($value->getDonGia()
+										 * ((100-$value->getGiam())/100)); ?>đ</b>&nbsp;&nbsp;&nbsp;
+										 <strike><?php echo number_format($value->getDonGia()); ?>đ</strike>
+								</div>
+								<div class="buy-now">
+									<button onclick="window.location.href = 
+									'detail-product.php?IDSP=<?php echo $value->getIDSanPham(); ?>'">Mua Ngay</button>
+								</div>
+							</div>
+						</div>
+				<?php		
+					}
+				?>	
+			
 		</div>
 		<div id="title-product">
 			<h2>THƯƠNG HIỆU NỔI TIẾNG</h2>

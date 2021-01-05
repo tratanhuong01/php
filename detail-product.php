@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style-detail-product.css">
     <link rel="stylesheet" type="text/css" href="css/responsive-detail-product.css">
+    <link rel="stylesheet" href="css/ttchitiet.css">
 </head>
 
 <body>
@@ -27,6 +28,7 @@
         include_once 'model/function.php';
         session_start(); 
     ?>
+    <span id="dong" onclick="closeHienInfo()"><img src="images/close.png" alt=""></span>
     <div id="ani" style="width: 400px;position: fixed;right: 0;background-color: white;opacity: 1;z-index: 99999127;background-color: white;">
     
     </div>
@@ -61,6 +63,8 @@
                 $mau = $_REQUEST['Mau']; 
                 $boNho = $_REQUEST['BoNho'];
                 $sp = getSanPhamC($iddsp,$boNho,$mau);
+                $_SESSION['iddongsanpham'] = $sp->getIDDongSanPham();
+                $_SESSION['anhsanpham'] = $sp->getAnhSanPham().$sp->getIDMau().".png";
         ?>
         <div id="frist-content">
             <div><a href="index.php">Trang Chủ</a>
@@ -210,7 +214,8 @@
                             echo $sp->getAnhSanPham(). $sp->getIDMau() . ".png"
                             ?>">
                             <button style="border: none;background-color: blue;padding: 8px;
-                            margin: 8px 2em;color: white;font-weight: bold;">
+                            margin: 8px 2em;color: white;font-weight: bold;"
+                            onclick="clickHienInfo()">
                                 Xem thông tin cấu hình sản phẩm
                             </button>
                         </div>
@@ -360,116 +365,13 @@
                 </div>
                 <div class="information-about-product-right">
                     <b>Sản phẩm nổi bật</b><br>
-                    <div class="name-product">
-                        <a href="#"><img src="images/images-product/17.1.png"><br></a>
-                        <div class="view-modal-product">
-                            <button onclick="openModal()" type="button"><i class="fa fa-search"
-                                    aria-hidden="true"></i></button>
-                        </div>
-                        <a href="#"><b>#000000</b></a>
-                        <div class="cost" class="cost" style="font-size: 12px;">
-                            <b>Giá : 1.200.000đ</b>&nbsp;&nbsp;&nbsp;<strike>1.320.000đ</strike>
-                        </div>
-                        <div class="buy-now">
-                            <button type="submit">Mua Ngay</button>
-                        </div>
-                    </div>
-                    <div class="name-product">
-                        <a href="#"><img src="images/images-product/18.1.png"><br></a>
-                        <div class="view-modal-product">
-                            <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </div>
-                        <a href="#"><b>#000001</b></a>
-                        <div class="cost" style="font-size: 12px;">
-                            <b>Giá : 229.000đ</b>&nbsp;&nbsp;&nbsp;<strike>240.000đ</strike>
-                        </div>
-                        <div class="buy-now">
-                            <button type="submit">Mua Ngay</button>
-                        </div>
-                    </div>
-                    <div class="name-product">
-                        <a href="#"><img src="images/images-product/110.png"><br></a>
-                        <div class="view-modal-product">
-                            <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </div>
-                        <a href="#"><b>#000001</b></a>
-                        <div class="cost" style="font-size: 12px;">
-                            <b>Giá : 160.000đ</b>&nbsp;&nbsp;&nbsp;<strike>180.000đ</strike>
-                        </div>
-                        <div class="buy-now">
-                            <button type="submit">Mua Ngay</button>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
             </div>
             <h3>Sản Phẩm Cùng Loại</h3>
             <div id="product1">
-                <div class="name-product1">
-                    <a href="#"><img src="images/images-product/17.1.png"><br></a>
-                    <div class="view-modal-product">
-                        <button onclick="openModal()" type="button"><i class="fa fa-search"
-                                aria-hidden="true"></i></button>
-                    </div>
-                    <a href="#"><b>#000003</b></a>
-                    <div class="cost" class="cost" style="font-size: 12px;">
-                        <b>Giá : 1.200.000đ</b>&nbsp;&nbsp;&nbsp;<strike>1.320.000đ</strike>
-                    </div>
-                    <div class="buy-now">
-                        <button type="submit">Mua Ngay</button>
-                    </div>
-                </div>
-                <div class="name-product1">
-                    <a href="#"><img src="images/images-product/18.1.png"><br></a>
-                    <div class="view-modal-product">
-                        <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                    <a href="#"><b>#000004</b></a>
-                    <div class="cost" style="font-size: 12px;">
-                        <b>Giá : 229.000đ</b>&nbsp;&nbsp;&nbsp;<strike>240.000đ</strike>
-                    </div>
-                    <div class="buy-now">
-                        <button type="submit">Mua Ngay</button>
-                    </div>
-                </div>
-                <div class="name-product1">
-                    <a href="#"><img src="images/images-product/110.png"><br></a>
-                    <div class="view-modal-product">
-                        <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                    <a href="#"><b>#000005</b></a>
-                    <div class="cost" style="font-size: 12px;">
-                        <b>Giá : 160.000đ</b>&nbsp;&nbsp;&nbsp;<strike>180.000đ</strike>
-                    </div>
-                    <div class="buy-now">
-                        <button type="submit">Mua Ngay</button>
-                    </div>
-                </div>
-                <div class="name-product1">
-                    <a href="#"><img src="images/images-product/110.png"><br></a>
-                    <div class="view-modal-product">
-                        <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                    <a href="#"><b>#000005</b></a>
-                    <div class="cost" style="font-size: 12px;">
-                        <b>Giá : 160.000đ</b>&nbsp;&nbsp;&nbsp;<strike>180.000đ</strike>
-                    </div>
-                    <div class="buy-now">
-                        <button type="submit">Mua Ngay</button>
-                    </div>
-                </div>
-                <div class="name-product1">
-                    <a href="#"><img src="images/images-product/110.png"><br></a>
-                    <div class="view-modal-product">
-                        <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </div>
-                    <a href="#"><b>#000005</b></a>
-                    <div class="cost" style="font-size: 12px;">
-                        <b>Giá : 160.000đ</b>&nbsp;&nbsp;&nbsp;<strike>180.000đ</strike>
-                    </div>
-                    <div class="buy-now">
-                        <button type="submit">Mua Ngay</button>
-                    </div>
-                </div>
+               
             </div>
             <div id="title-product">
                 <h2>THƯƠNG HIỆU NỔI TIẾNG</h2>
@@ -478,8 +380,9 @@
             <?php include 'footer.php'; ?>
         </div>
         <?php } ?>
-    </div>
 
+    </div>
+    <?php include 'TTChiTiet.php'; ?>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -489,7 +392,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="js/process-form.js"></script>
+        <script src="js/process-form.js"></script>
+        <script src="js/jsMain.js"></script>
     <script src="js/colorAndMemoryOption.js"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
 		<script type="text/javascript" src="js/jsMain.js"></script>
